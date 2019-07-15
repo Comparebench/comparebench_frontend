@@ -1,14 +1,82 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>ComparebenchFrontend</title>
-  <base href="/">
+    <head>
+        <meta charset="utf-8">
+        <title>ComparebenchFrontend</title>
+        <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>CompareBench - Track your benchmarks and make comparisons</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Create comparisons based on your benchmarks or compare yours with others. Compare everything from CPU frequency to total wattage; see how your build stacks up."/>
+        <meta name="keywords" content="comparebench, compare, intel, amd, build a pc, benchmarks, benchmarking, compare benchmarks, benchmark comparison, benchmark tool, compare bench">
+        <meta http-equiv="Content-Language" content="en">
+
+        <!-- Bootstrap Core CSS -->
+        <link href="https://d29383tfbzacui.cloudfront.net/template/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://d29383tfbzacui.cloudfront.net/template/plugins/prism/prism.css" rel="stylesheet">
+        <link href="https://d29383tfbzacui.cloudfront.net/template/css/style_light.css" rel="stylesheet">
+
+        <link href="https://d29383tfbzacui.cloudfront.net/template/css/pages/dashboard1.css" rel="stylesheet">
+        <link href="https://d29383tfbzacui.cloudfront.net/template/css/colors/default.css" id="theme" rel="stylesheet">
+        <link href="https://d29383tfbzacui.cloudfront.net/template/plugins/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://d29383tfbzacui.cloudfront.net/template/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+        <link href="https://d29383tfbzacui.cloudfront.net/template/plugins/wizard/steps.css" rel="stylesheet">
+        <link href="https://d29383tfbzacui.cloudfront.net/template/css/pages/bootstrap-switch.css" rel="stylesheet">
+        <link href="https://d29383tfbzacui.cloudfront.net/template/plugins/bootstrap-switch/bootstrap-switch.min.css" rel="stylesheet">
+        <link href="https://d29383tfbzacui.cloudfront.net/template/css/pages/pricing-page.css" rel="stylesheet">
+        <link href="https://d29383tfbzacui.cloudfront.net/template/css/pages/floating-label.css" rel="stylesheet">
+        <link href="https://d29383tfbzacui.cloudfront.net/template/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
+        <link href="https://d29383tfbzacui.cloudfront.net/template/css/pages/other-pages.css" rel="stylesheet">
+                <!-- Material Design Bootstrap -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/b-1.5.1/b-html5-1.5.1/b-print-1.5.1/datatables.min.css"/>
+
+
+        <script src="https://d29383tfbzacui.cloudfront.net/template/plugins/jquery/jquery.min.js"></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+        <!-- Bootstrap popper Core JavaScript -->
+        <script src="https://d29383tfbzacui.cloudfront.net/template/plugins/bootstrap/js/popper.min.js"></script>
+        <script src="https://d29383tfbzacui.cloudfront.net/template/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="https://d29383tfbzacui.cloudfront.net/template/js/perfect-scrollbar.jquery.min.js"></script>
+        <!--Wave Effects -->
+        <script src="https://d29383tfbzacui.cloudfront.net/template/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="https://d29383tfbzacui.cloudfront.net/template/js/sidebarmenu.js"></script>
+        <!--Custom JavaScript -->
+        <script src="https://d29383tfbzacui.cloudfront.net/template/js/custom.min.js"></script>
+        <!-- ============================================================== -->
+        <!-- This page plugins -->
+        <!-- ============================================================== -->
+        <!--sparkline JavaScript -->
+        <script src="https://d29383tfbzacui.cloudfront.net/template/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <!--c3 JavaScript -->
+        <script src="https://d29383tfbzacui.cloudfront.net/template/plugins/d3/d3.min.js"></script>
+        <script src="https://d29383tfbzacui.cloudfront.net/template/plugins/c3-master/c3.min.js"></script>
+        <script src="https://d29383tfbzacui.cloudfront.net/template/plugins/wizard/jquery.steps.min.js"></script>
+        <script src="https://d29383tfbzacui.cloudfront.net/template/plugins/wizard/jquery.validate.min.js"></script>
+        <script src="https://d29383tfbzacui.cloudfront.net/template/plugins/wizard/steps.js"></script>
+        <script src="https://d29383tfbzacui.cloudfront.net/template/plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
+        <!-- Popup message jquery -->
+        <script src="https://d29383tfbzacui.cloudfront.net/template/plugins/toast-master/js/jquery.toast.js"></script>
+        <script src="https://d29383tfbzacui.cloudfront.net/template/plugins/select2/dist/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="https://d29383tfbzacui.cloudfront.net/template/plugins/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.16/b-1.5.1/b-html5-1.5.1/b-print-1.5.1/datatables.min.js"></script>
+
+    </head>
+    <body class="fix-header fix-sidebar card-no-border">
+
+            <app-root></app-root>
+    </body>
 </html>
