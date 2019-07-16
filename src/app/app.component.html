@@ -7,7 +7,7 @@
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="/">
+                        <a class="navbar-brand" routerLink="/">
                             <!-- Logo icon --><b>
                                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                                 <!-- Dark Logo icon -->
@@ -81,9 +81,9 @@
                             <!-- Profile -->
                             <!-- ============================================================== -->
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle waves-effect waves-dark" *ngIf="user"  href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/static/233.png" alt="user" class="profile-pic" /></a>
-                                <a class="nav-link dropdown-toggle waves-effect waves-dark" *ngIf="!user"  href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button class="btn btn-sm btn-info">Log in</button></a>
-                                <div *ngIf="user" class="dropdown-menu dropdown-menu-right animated flipInY">
+                                <a class="nav-link dropdown-toggle waves-effect waves-dark" *ngIf="user" (click)="loggedDropdown.open()" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/assets/233.png" alt="user" class="profile-pic" /></a>
+                                <a class="nav-link dropdown-toggle waves-effect waves-dark" *ngIf="!user" (click)="authDropdown.open()" aria-haspopup="true" aria-expanded="false"><button class="btn btn-sm btn-info">Log in</button></a>
+                                <div *ngIf="user" class="dropdown-menu dropdown-menu-right animated flipInY" ngbDropdown #loggedDropdown="ngbDropdown">
                                     <ul class="dropdown-user">
                                         <li>
                                             <div class="dw-user-box">
@@ -97,10 +97,10 @@
                                         </li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="/user/${user.uid}"><i class="mdi mdi-account"></i> My Profile</a></li>
-                                        <li><a href="/logout"><i class="mdi mdi-logout"></i> Logout</a></li>
+                                        <li><a (click)="logout()"><i class="mdi mdi-logout"></i> Logout</a></li>
                                     </ul>
                                 </div>
-                                <div *ngIf="!user" class="dropdown-menu dropdown-menu-right animated flipInY">
+                                <div *ngIf="!user" class="dropdown-menu dropdown-menu-right animated flipInY" ngbDropdown #authDropdown="ngbDropdown">
                                     <div style="min-width: 270px;padding: 15px;">
                                         <div>
 
@@ -109,7 +109,6 @@
                                             <input type="password" class="form-control" required="" [(ngModel)]="password" placeholder="Password" name="password" value="">
                                             <input type="submit" (click)="login()" class="btn btn-default" name="form.submitted" value="Log In">
                                         </div>
-                                        <button (click)="results()">test</button>
                                         <div>
                                         <h6>Don't have an account? <a href="/signup">Sign Up</a></h6>
                                                         <h6>Forgot your password? <a href="/resetpassword">Reset Password</a></h6>
@@ -125,13 +124,13 @@
                 <div class="scroll-sidebar">
                     <nav class="sidebar-nav">
                         <ul id="sidebarnav">
-                            <li> <a class="has-arrow waves-effect waves-dark" href="/yourresults" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
+                            <li> <a class="has-arrow waves-effect waves-dark" routerLink="/dashboard" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
                             </li>
 
                             <!--li> <a class="has-arrow waves-effect waves-dark" href="/news" aria-expanded="false"><i class="mdi mdi-newspaper"></i><span class="hide-menu">News</span></a>
 
                             </li-->
-                            <li> <a class="has-arrow waves-effect waves-dark" href="/results" aria-expanded="false"><i class="mdi mdi-view-list"></i><span class="hide-menu">Browse Results</span></a>
+                            <li> <a class="has-arrow waves-effect waves-dark" routerLink="/results" aria-expanded="false"><i class="mdi mdi-view-list"></i><span class="hide-menu">Browse Results</span></a>
 
                             </li>
 

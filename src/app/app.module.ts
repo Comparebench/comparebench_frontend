@@ -9,15 +9,21 @@ import {FormsModule} from "@angular/forms";
 import {TokenInterceptor} from "./token.interceptor";
 import {CookieService} from "ngx-cookie-service";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { BenchmarkComponent } from './benchmark/benchmark.component';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    DashboardComponent
+    DashboardComponent,
+    BenchmarkComponent,
+    ResultComponent
   ],
     imports: [
         BrowserModule,
+        NgbModule,
         AppRoutingModule,
         HttpClientModule,
         FormsModule

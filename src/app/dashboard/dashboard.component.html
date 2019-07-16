@@ -1,0 +1,142 @@
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row col-md-12">
+
+            <!-- Column -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="d-flex flex-row">
+                        <div class="p-10 bg-info">
+                            <h3 class="text-white box m-b-0"><i style="font-size: 30px;" class="mdi mdi-desktop-tower"></i></h3>
+                        </div>
+                        <div class="align-self-center m-l-20">
+                            <h3 class="m-b-0 text-info">{{resultsCount}}</h3>
+                            <h5 class="text-muted m-b-0">Benchmarks</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="d-flex flex-row">
+                        <div class="p-10 bg-info">
+                            <h3 class="text-white box m-b-0"><i style="font-size: 30px;" class="mdi mdi-compare"></i></h3>
+                        </div>
+                        <div class="align-self-center m-l-20">
+                            <h3 class="m-b-0 text-info">{{compareCount}}</h3>
+                            <h5 class="text-muted m-b-0">Comparisons</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <a href="/addbenchmark">
+                        <div class="d-flex flex-row">
+                            <div class="p-10 bg-success">
+                                <h3 class="text-white box m-b-0"><i style="font-size: 30px;" class="mdi mdi-plus"></i></h3>
+                            </div>
+                            <div class="align-self-center m-l-20">
+                                <h3 class="m-b-0 text-info">Add</h3>
+                                <h5 class="text-muted m-b-0">Benchmark Profile</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- Column -->
+            <div class="col-lg-3 col-md-6">
+                <a href="/create_compare">
+                    <div class="card">
+                        <div class="d-flex flex-row">
+                            <div class="p-10 bg-success">
+                                <h3 class="text-white box m-b-0"><i style="font-size: 30px;" class="mdi mdi-plus"></i></h3>
+                            </div>
+                            <div class="align-self-center m-l-20">
+                                <h3 class="m-b-0 text-info">Add</h3>
+                                <h5 class="text-muted m-b-0">Comparison</h5>
+                            </div>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row col-md-12">
+            <div class="card col-md-12">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs customtab" role="tablist">
+                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#benchmarks" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Profiles</span></a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#comparisons" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">Comparisons</span></a> </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="benchmarks" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Model</th>
+                                                <th style="text-align: right">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody  *ngFor="let result of results">
+                                            <tr routerLink="/benchmark/{{result.rid}}">
+                                                <td>{{result.title}}</td>
+                                                <td>{{result.model}}</td>
+                                                <td style="text-align: right">
+                                                    <button style="margin-right: 5px;" (click)="deleteResult(result.rid, template)" type="button" class="btn waves-effect waves-light btn-danger"><i class="mdi mdi-delete"></i></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="comparisons" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th style="text-align: right">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="compares_list">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+
+    </div>
+</div>
+
+
+<ng-template #template let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Delete Result</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        Are you sure you want to delete this result? This action cannot be undone.
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss()">Cancel</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Delete</button>
+    </div>
+</ng-template>
