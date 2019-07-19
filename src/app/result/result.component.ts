@@ -11,7 +11,7 @@ import {Subscription} from "rxjs";
 })
 export class ResultComponent implements OnInit {
 
-    private benchmark = {cpu: {}};
+    private benchmark = {gpu: []};
     private created_by_user = {};
     private resultId;
 
@@ -24,6 +24,7 @@ export class ResultComponent implements OnInit {
         console.log(this.resultId)
         let response;
         this.userService.getResult(this.route.snapshot.paramMap.get('resultId')).subscribe((response) => {
+            this.benchmark = response['benchmark'];
             console.log(response)
         })
     }

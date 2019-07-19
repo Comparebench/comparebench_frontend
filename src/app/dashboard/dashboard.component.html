@@ -5,7 +5,7 @@
             <!-- Column -->
             <div class="col-lg-3 col-md-6">
                 <div class="card">
-                    <div class="d-flex flex-row">
+                    <div class="d-flex flex-row" style="background-color: #2a3e52;">
                         <div class="p-10 bg-info">
                             <h3 class="text-white box m-b-0"><i style="font-size: 30px;" class="mdi mdi-desktop-tower"></i></h3>
                         </div>
@@ -19,7 +19,7 @@
             <!-- Column -->
             <div class="col-lg-3 col-md-6">
                 <div class="card">
-                    <div class="d-flex flex-row">
+                    <div class="d-flex flex-row" style="background-color: #2a3e52;">
                         <div class="p-10 bg-info">
                             <h3 class="text-white box m-b-0"><i style="font-size: 30px;" class="mdi mdi-compare"></i></h3>
                         </div>
@@ -34,7 +34,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card">
                     <a href="/addbenchmark">
-                        <div class="d-flex flex-row">
+                        <div class="d-flex flex-row" style="background-color: #2a3e52;">
                             <div class="p-10 bg-success">
                                 <h3 class="text-white box m-b-0"><i style="font-size: 30px;" class="mdi mdi-plus"></i></h3>
                             </div>
@@ -50,7 +50,7 @@
             <div class="col-lg-3 col-md-6">
                 <a href="/create_compare">
                     <div class="card">
-                        <div class="d-flex flex-row">
+                        <div class="d-flex flex-row" style="background-color: #2a3e52;">
                             <div class="p-10 bg-success">
                                 <h3 class="text-white box m-b-0"><i style="font-size: 30px;" class="mdi mdi-plus"></i></h3>
                             </div>
@@ -86,11 +86,11 @@
                                             </tr>
                                         </thead>
                                         <tbody  *ngFor="let result of results">
-                                            <tr routerLink="/benchmark/{{result.rid}}">
+                                            <tr routerLink="/benchmark/{{result.id}}">
                                                 <td>{{result.title}}</td>
                                                 <td>{{result.model}}</td>
                                                 <td style="text-align: right">
-                                                    <button style="margin-right: 5px;" (click)="deleteResult(result.rid, template)" type="button" class="btn waves-effect waves-light btn-danger"><i class="mdi mdi-delete"></i></button>
+                                                    <button style="margin-right: 5px;" (click)="$event.stopPropagation();deleteResult(result.rid, template)" type="button" class="btn waves-effect waves-light btn-danger"><i class="mdi mdi-delete"></i></button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -110,7 +110,11 @@
                                                 <th style="text-align: right">Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="compares_list">
+                                        <tbody  *ngFor="let comparison of comparisons">
+                                            <tr routerLink="/compare/{{comparison.compare_id}}">
+                                                <td>{{comparison.summary}}</td>
+                                                <td></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

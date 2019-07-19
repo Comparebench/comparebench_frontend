@@ -1,0 +1,26 @@
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card col-md-12">
+                <div class="card-body">
+
+
+                    <form>
+<!--                                <input type="hidden" name="came_from" value="${came_from}"/>-->
+
+                                <label for="email">Email address</label>
+                                <input type="text" class="form-control" id="email" [(ngModel)]="email" required name="login" placeholder="Enter email"/>
+
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" [(ngModel)]="password" required placeholder="Password" name="password"/>
+
+                        <button class="btn btn-default" name="form.submitted" (click)="login()" value="Log In" style="margin: 10px 0 5px 0;">Submit</button>
+
+                        </form>
+                        <h6>Don't have an account? <a href="/signup">Sign Up</a></h6>
+                        <h6>Forgot your password? <a href="/resetpassword">Reset Password</a></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

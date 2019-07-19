@@ -2585,3 +2585,64 @@ body.modal-open {
 .roadmap-button.is-featured:active {
   background-color: #269aff;
 }
+.page-wrapper{
+    background-color: #202124;
+}
+
+.left-sidebar{
+    background-color: #292a2d;
+}
+
+.nav-tabs .nav-link.active {
+     background-color: #292a2d
+}
+
+.nav-tabs{
+    border-bottom-color: #4c4c4c;
+}
+
+.page-titles{
+    background-color:  #202124;
+}
+
+.table-hover tbody tr:hover {
+    background: #202124;
+}
+.table td{
+    vertical-align: unset;
+}
+.table td, .table th {
+    border-color: #4c4c4c;
+}
+.table tbody+tbody {
+    border-top: 2px solid #4c4c4c;
+}
+html{
+    background-color: #202124;
+}
+body{
+    color: #babcbd
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: #babcbd
+}
+
+.card {
+    background-color: #292a2d;
+}
+@media (min-width: 768px) {
+    .mini-sidebar .sidebar-nav #sidebarnav > li:hover > a {
+        background: #202124;
+    }
+}
+
+.sidebar-nav ul li a, .sidebar-nav ul li a.active, .sidebar-nav ul li a:hover {
+
+    color: #babcbd
+}
+.img-thumbnail{
+    background-color: #292a2d;
+    border: 1px solid #292a2d;
+}
+

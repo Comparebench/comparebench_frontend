@@ -1,0 +1,115 @@
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                         <div class="d-flex">
+                            <h4 class="card-title">
+                                <span class="lstick"></span>
+                                Comparison
+                            </h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-xs-6 b-r"><span class="text-muted">CPU</span>
+                                <br>
+                                <p><strong>CPU</strong></p>
+                            </div>
+                            <div class="col-md-3 col-xs-6 b-r"><span class="text-muted">GPU</span>
+                                <br>
+                                    <p><strong>GPU</strong></p>
+                            </div>
+                            <div class="col-md-3 col-xs-6 b-r"><span class="text-muted">Memory</span>
+                                <br>
+                                <p><strong>Memory</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                         <div class="d-flex">
+                            <h4 class="card-title">
+                                <span class="lstick"></span>
+                                CPU Results
+                            </h4>
+                        </div>
+                        <div class="row" >
+                        <div class="col-md-6 cinebench_graph" *ngIf="cinebenchGraphOpts">
+                            <canvas baseChart
+                                [datasets]="cinebenchGraphOpts.data.datasets"
+                                [labels]="cinebenchGraphOpts.data.labels"
+                                [options]="cinebenchGraphOpts.options"
+                                [chartType]="cinebenchGraphOpts.type">
+                            </canvas>
+                        </div>
+                        <div class="col-md-6" *ngIf="freqGraphOpts">
+                                    <canvas baseChart
+                                        [datasets]="freqGraphOpts.data.datasets"
+                                        [labels]="freqGraphOpts.data.labels"
+                                        [options]="freqGraphOpts.options"
+                                        [chartType]="freqGraphOpts.type">
+                                    </canvas>
+                        </div>
+                        <div class="col-md-6 tdmark_physics_graph" *ngIf="fxExPhysGraphOpts">
+                                    <canvas baseChart
+                                        [datasets]="fxExPhysGraphOpts.data.datasets"
+                                        [labels]="fxExPhysGraphOpts.data.labels"
+                                        [options]="fxExPhysGraphOpts.options"
+                                        [chartType]="fxExPhysGraphOpts.type">
+                                    </canvas>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                         <div class="d-flex">
+                            <h4 class="card-title">
+                                <span class="lstick"></span>
+                                GPU Results
+                            </h4>
+                        </div>
+                        <div class="row" >
+                            <div class="col-md-6 tdmark_ex_graph" *ngIf="fxExGraphOpts">
+                                    <canvas baseChart
+                                    [datasets]="fxExGraphOpts.data.datasets"
+                                    [labels]="fxExGraphOpts.data.labels"
+                                    [options]="fxExGraphOpts.options"
+                                    [chartType]="fxExGraphOpts.type">
+                            </canvas>
+                            </div>
+                            <div class="col-md-6 tdmark_ul_graph" *ngIf="fxUlGraphOpts">
+                                    <canvas baseChart
+                                        [datasets]="fxUlGraphOpts.data.datasets"
+                                        [labels]="fxUlGraphOpts.data.labels"
+                                        [options]="fxUlGraphOpts.options"
+                                        [chartType]="fxUlGraphOpts.type">
+                                    </canvas>
+                            </div>
+                            <div class="col-md-6 heaven_graph">
+<!--                                <div class="col-md-6 tdmark_ex_graph" *ngIf="fxUlGraphOpts">-->
+<!--                                    <canvas baseChart-->
+<!--                                        [datasets]="fxUlGraphOpts.data.datasets"-->
+<!--                                        [labels]="fxUlGraphOpts.data.labels"-->
+<!--                                        [options]="fxUlGraphOpts.options"-->
+<!--                                        [chartType]="fxUlGraphOpts.type">-->
+<!--                                    </canvas>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -24,13 +24,13 @@
                         <div class="row">
                             <div class="col-md-3 col-xs-6 b-r"><span class="text-muted">CPU</span>
                                 <br>
-                                <p><strong><a href="/products/cpu/{{benchmark.cpu.cpuid}}">{{benchmark.cpu.model}}</a></strong></p>
+                                <p><strong><a href="/products/cpu/{{benchmark.cpu_id}}">{{benchmark.model}}</a></strong></p>
                             </div>
                             <div class="col-md-3 col-xs-6 b-r"><span class="text-muted">GPU</span>
                                 <br>
-<!--                                <span *ngFor="let gpu of benchmark.gpu">-->
-<!--                                    <p><strong>{{gpu.part_details.make}} {{gpu.part_details.model}}</strong></p>-->
-<!--                                </span>-->
+                                <span *ngFor="let gpu of benchmark.gpu">
+                                    <p><strong>{{gpu.make}} {{gpu.model}}</strong></p>
+                                </span>
                             </div>
                             <div class="col-md-3 col-xs-6 b-r"><span class="text-muted">Memory</span>
                                 <br>

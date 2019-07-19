@@ -14,34 +14,13 @@ export class AppComponent implements OnInit {
     private email;
     private password;
     private user;
-    @ViewChild('authDropdown') private authDropdown: NgbDropdown
-    @ViewChild('loggedDropdown') private loggedDropdown: NgbDropdown
+    private initLoading = true;
     constructor(private userService: UserService, private router: Router) {
-    }
-
-    login() {
-        this.userService.login(this.email, this.password)
-            .subscribe((response) => {
-                console.log(response)
-                if(response.status === true){
-                    this.authDropdown.close();
-                    this.user = true
-                    this.router.navigate(['/dashboard'])
-                }
-            })
-    }
-    logout() {
-        this.userService.logout().subscribe((response) => {
-            this.loggedDropdown.close();
-            this.user = response;
-            this.router.navigate(['/'])
-        })
+            this.userService.authenticate()
     }
 
     ngOnInit() {
-        this.userService.authenticate().subscribe((response) => {
-            this.user = response
-        })
+
 
     }
 }
