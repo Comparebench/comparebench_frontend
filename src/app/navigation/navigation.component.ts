@@ -12,7 +12,6 @@ export class NavigationComponent implements OnInit {
     private email;
     private password;
     private user;
-    private initLoading = true;
     private loggedIn;
     @ViewChild('loggedDropdown', {static: true}) private loggedDropdown: NgbDropdown;
 
@@ -30,7 +29,7 @@ export class NavigationComponent implements OnInit {
     }
 
     logout() {
-        this.userService.logout().subscribe((response) => {
+        this.userService.logout().subscribe(() => {
             this.loggedDropdown.close();
             this.user = false;
             this.loggedIn = false;

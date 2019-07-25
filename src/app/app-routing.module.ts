@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import {LandingComponent} from "./landing/landing.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {ResultComponent} from "./result/result.component";
-import {AppResolverService} from "./app-resolver.service";
 import {LoginComponent} from "./auth/login/login.component";
 import {ComparisonComponent} from "./comparison/comparison.component";
 

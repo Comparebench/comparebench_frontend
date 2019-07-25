@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
     }
 
     deleteResult(resultId, template) {
-        this.modalService.open(template, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.modalService.open(template, {ariaLabelledBy: 'modal-basic-title'}).result.then(() => {
             console.log("Deleted")
         }, () => {
             console.log("Dismissed")

@@ -15,7 +15,7 @@ export class ComparisonComponent implements OnInit {
     private cinebenchGraphOpts;
     private fxExGraphOpts;
     private fxExPhysGraphOpts;
-    private fxUlGraphOpts
+    private fxUlGraphOpts;
 
     constructor(private route: ActivatedRoute, private userService: UserService) {
     }
@@ -30,9 +30,9 @@ export class ComparisonComponent implements OnInit {
             graphStep: 100
         };
         this.userService.getComparison(this.route.snapshot.paramMap.get('compareId')).subscribe((response) => {
-            Chart.defaults.global.defaultFontColor = "#babcbd"
+            Chart.defaults.global.defaultFontColor = "#babcbd";
             this.benchmarks = response['benchmarks'];
-            console.log(response)
+            console.log(response);
             // Generate graph options
                 let cbGraphOpts = this.generateCinebenchOpts(this.benchmarks);
                 let freqGraphOpts = this.generateFrequencyOpts(this.benchmarks);
@@ -56,10 +56,10 @@ export class ComparisonComponent implements OnInit {
                 if(fsUlGraphOpts) {
                     this.fxUlGraphOpts = this.generateGraph(fsUlGraphOpts);
                 }
-                 for (let i = 0; i < this.benchmarks.length; i++) {
-                     let bench_key = Object.keys(this.benchmarks[i])[0];
-                     // $('.specs').append("<p>"+this.benchmarks[i][bench_key].benchmarks.model+"</p>")
-                 }
+                 // for (let i = 0; i < this.benchmarks.length; i++) {
+                 //     let bench_key = Object.keys(this.benchmarks[i])[0];
+                 //     // $('.specs').append("<p>"+this.benchmarks[i][bench_key].benchmarks.model+"</p>")
+                 // }
                  console.log(cbGraphOpts)
         })
     }
@@ -82,7 +82,6 @@ export class ComparisonComponent implements OnInit {
             CinebenchOpts.graphBorderColors.push('rgba(54, 162, 235, 1)');
         }
         let cb_min = Math.floor(Math.min.apply(Math, CinebenchOpts.graphData) / 100) * 100;
-        let cb_max = Math.ceil(Math.max.apply(Math, CinebenchOpts.graphData) / 100) * 100;
         cb_min = cb_min - 500;
         if (cb_min < 0) {
             cb_min = 0
@@ -90,7 +89,7 @@ export class ComparisonComponent implements OnInit {
         CinebenchOpts.scaleMin = cb_min;
         return CinebenchOpts
     }
-    
+
     generateFrequencyOpts (graphData) {
         let FrequencyOpts = JSON.parse(JSON.stringify(this.graphOpts));
 
@@ -124,7 +123,7 @@ export class ComparisonComponent implements OnInit {
         FrequencyOpts.scaleMax = max+100;
         return FrequencyOpts
     };
-    
+
     generate3dMarkFSExOpts (graphData) {
         let fireStrikeOpts = JSON.parse(JSON.stringify(this.graphOpts));
         fireStrikeOpts.graphTitle = '3DMark FS Extreme';
@@ -166,7 +165,7 @@ export class ComparisonComponent implements OnInit {
         fireStrikeOpts.scaleMax = max+1000;
         return fireStrikeOpts
     };
-    
+
     generate3dMarkFSExPhysOpts (graphData) {
         let fireStrikeOpts = JSON.parse(JSON.stringify(this.graphOpts));
         fireStrikeOpts.graphTitle = '3DMark FS Extreme Physics Score';
@@ -207,7 +206,7 @@ export class ComparisonComponent implements OnInit {
         fireStrikeOpts.scaleMax = max+500;
         return fireStrikeOpts
     };
-    
+
     generate3dMarkFSUlOpts(graphData) {
         let fireStrikeOpts = JSON.parse(JSON.stringify(this.graphOpts));
 
@@ -325,7 +324,7 @@ export class ComparisonComponent implements OnInit {
         };
         if(graphOpts.graphData) {
             for (let i = 0; i < graphOpts.graphData.length; i++) {
-                console.log(graphOpts.graphData[i])
+                console.log(graphOpts.graphData[i]);
                 let dataset = {
                     data: graphOpts.graphData[i],
                     backgroundColor: graphOpts.graphColors[i],

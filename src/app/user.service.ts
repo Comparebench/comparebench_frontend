@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, of, of as observableOf, Subject, Subscription} from "rxjs";
+import {Observable, Subject, Subscription} from "rxjs";
 import {ILoginResponse, IResponse} from "./interfaces/response";
 import {HttpClient} from "@angular/common/http";
 
@@ -47,7 +47,7 @@ export class UserService {
     }
 
     isLoggedIn(): Observable<boolean>{
-        console.log("Checking auth: " + this.loggedIn)
+        console.log("Checking auth: " + this.loggedIn);
         return this.loggedIn
     }
 
