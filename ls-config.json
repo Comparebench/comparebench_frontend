@@ -1,0 +1,5 @@
+{
+  "port": 4200,
+  "_comment": "Use as: lite-server -c ls-config.json",
+  "server": { "baseDir": "dist/comparebench-frontend" }
+}
