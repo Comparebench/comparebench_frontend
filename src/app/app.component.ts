@@ -1,8 +1,5 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "./user.service";
-import {IResponse} from "./interfaces/response";
-import {Router} from "@angular/router";
-import {NgbDropdown} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-root',
@@ -10,17 +7,19 @@ import {NgbDropdown} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    title = 'comparebench-frontend';
-    private email;
-    private password;
-    private user;
     private initLoading = true;
-    constructor(private userService: UserService, private router: Router) {
-            this.userService.authenticate()
+    constructor(private userService: UserService) {
+
     }
 
     ngOnInit() {
-
+        this.userService.getAuth().subscribe(response=>{
+            this.userService.loggedIn.next(response);
+            this.userService.user = true;
+            this.initLoading = false
+        })
 
     }
+
+
 }

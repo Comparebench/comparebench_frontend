@@ -1,15 +1,12 @@
-<div class="preloader" *ngIf="initLoading">
+<div class="preloader" [hidden]="!initLoading">
     <div class="loader">
         <div class="loader__figure"></div>
         <p class="loader__label">CompareBench</p>
     </div>
 </div>
 <div id="main-wrapper">
-
-            <app-navigation></app-navigation>
-
-
-<router-outlet></router-outlet>
+    <app-navigation></app-navigation>
+    <router-outlet></router-outlet>
 </div>
 
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject, Subscription} from "rxjs";
+import {Observable, of, Subject, Subscription} from "rxjs";
 import {ILoginResponse, IResponse} from "./interfaces/response";
 import {HttpClient} from "@angular/common/http";
 
@@ -35,13 +35,7 @@ export class UserService {
     getAuth(): Observable<any> {
         return this.http.post<boolean>(this._authUrl, {}, {})
     }
-    authenticate(): Subscription {
-        return this.getAuth().subscribe(response=>{
-            this.loggedIn.next(response);
-            this.user = true;
-            return response
-        })
-    }
+
     logout(): Observable<boolean> {
         return this.http.post<boolean>(this._logoutUrl, {}, {})
     }

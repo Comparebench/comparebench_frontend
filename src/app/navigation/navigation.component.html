@@ -80,8 +80,8 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle waves-effect waves-dark" *ngIf="user" (click)="loggedDropdown.open()" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/assets/233.png" alt="user" class="profile-pic" /></a>
                                 <a class="nav-link dropdown-toggle waves-effect waves-dark" *ngIf="!user" routerLink="/login" aria-haspopup="true" aria-expanded="false"><button class="btn btn-sm btn-info">Log in</button></a>
-                                <div *ngIf="user" class="dropdown-menu dropdown-menu-right animated flipInY" ngbDropdown #loggedDropdown="ngbDropdown">
-                                    <ul class="dropdown-user">
+                                <div [hidden]="!user" class="dropdown-menu dropdown-menu-right animated flipInY" ngbDropdown #loggedDropdown="ngbDropdown">
+                                    <ul *ngIf="user" class="dropdown-user">
                                         <li>
                                             <div class="dw-user-box">
                                                 <div class="u-img"><img src="/static/${user.avatar_id}.png" alt="user"></div>
@@ -93,8 +93,8 @@
                                             </div>
                                         </li>
                                         <li role="separator" class="divider"></li>
-                                        <li><a href="/user/${user.uid}"><i class="mdi mdi-account"></i> My Profile</a></li>
-                                        <li><a (click)="logout()"><i class="mdi mdi-logout"></i> Logout</a></li>
+                                        <li style="cursor: pointer;"><a href="/user/${user.uid}"><i class="mdi mdi-account"></i> My Profile</a></li>
+                                        <li style="cursor: pointer;"><a (click)="logout()"><i class="mdi mdi-logout"></i> Logout</a></li>
                                     </ul>
                                 </div>
                             </li>
