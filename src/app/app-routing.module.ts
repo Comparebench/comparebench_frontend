@@ -5,6 +5,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {ResultComponent} from "./result/result.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {ComparisonComponent} from "./comparison/comparison.component";
+import {BenchmarkComponent} from "./benchmark/benchmark.component";
 
 const routes: Routes = [
     {
@@ -20,6 +21,11 @@ const routes: Routes = [
         component: DashboardComponent,
         // canActivate: [AuthGuardService],
 
+        pathMatch: 'full'
+    },
+    {
+        path: 'benchmark/add',
+        component: BenchmarkComponent,
         pathMatch: 'full'
     },
     {

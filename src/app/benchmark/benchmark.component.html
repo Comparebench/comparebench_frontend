@@ -1,3 +1,69 @@
-<p>
-  benchmark works!
-</p>
+<div class="page-wrapper">
+    <div class="container-fluid">
+
+        <div class="row" id="validation">
+            <div class="col-12">
+                <div class="card wizard-content">
+                    <div class="card-body">
+                        <h4 class="card-title">Add a new benchmark profile</h4>
+                        <!--h6 class="card-subtitle"></h6-->
+                        <form class="add-benchmark-wizard wizard-circle">
+                            <!-- Step 1 -->
+                            <h6>Benchmark Info</h6>
+                            <section>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="title">Benchmark Title: <span class="danger">*</span> </label>
+                                            <input type="text" class="form-control required" id="title" name="title">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 ">
+                                        <div class="bt-switch">
+                                            <label for="benchmark-private">Private:</label>
+                                            <input type="checkbox" id="benchmark-private" name="private" data-on-color="warning" data-off-color="primary" data-on-text="Private" data-off-text="Public">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </section>
+                            <!-- Step 2 -->
+                            <h6>Benchmark Specs</h6>
+                            <section>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="cpuz_file">CPUZ Import :</label>
+                                            <input type="file" class="form-control required" name="cpuz_html" id="cpuz_file">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- Step 3 -->
+                            <h6>Benchmark Result Upload</h6>
+                            <section>
+                                <div class="row col-md-12">
+
+                                    <div style="margin-top: 10px;margin-bottom: 15px;" class="col-md-12">
+                                        <button class="add-benchmark btn btn-info">Add a benchmark</button>
+                                    </div>
+                                    <div class="benchmarks-wrap col-md-6"></div>
+
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="http://localhost:8180/static/js/wizard.js"></script>

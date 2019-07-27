@@ -15,6 +15,7 @@ import { ResultComponent } from './result/result.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ComparisonComponent } from './comparison/comparison.component';
+import {ArchwizardModule} from "angular-archwizard";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ComparisonComponent } from './comparison/comparison.component';
     imports: [
         BrowserModule,
         NgbModule,
+        ArchwizardModule,
         ChartsModule,
         AppRoutingModule,
         HttpClientModule,
