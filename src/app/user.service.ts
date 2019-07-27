@@ -46,7 +46,7 @@ export class UserService {
     }
 
     static getHostname() {
-        return 'https://comparebench.com/api/'
+        return 'https://comparebench.com/api'
     }
 }
 
