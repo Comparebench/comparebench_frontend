@@ -46,7 +46,7 @@ export class UserService {
     }
 
     static getHostname() {
-        return 'http://localhost:8180'
+        return 'https://comparebench.com/api/'
     }
 }
 
