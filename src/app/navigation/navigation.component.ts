@@ -9,10 +9,10 @@ import {NgbDropdown} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-    private email;
-    private password;
-    private user;
-    private loggedIn;
+    email;
+    password;
+    user;
+    loggedIn;
     @ViewChild('loggedDropdown', {static: true}) private loggedDropdown: NgbDropdown;
 
     constructor(private userService: UserService, private router: Router) {

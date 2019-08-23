@@ -9,13 +9,13 @@ import * as Chart from 'chart.js';
   styleUrls: ['./comparison.component.css']
 })
 export class ComparisonComponent implements OnInit {
-    private benchmarks;
-    private graphOpts;
-    private freqGraphOpts;
-    private cinebenchGraphOpts;
-    private fxExGraphOpts;
-    private fxExPhysGraphOpts;
-    private fxUlGraphOpts;
+    benchmarks;
+    graphOpts;
+    freqGraphOpts;
+    cinebenchGraphOpts;
+    fxExGraphOpts;
+    fxExPhysGraphOpts;
+    fxUlGraphOpts;
 
     constructor(private route: ActivatedRoute, private userService: UserService) {
     }

@@ -13,10 +13,10 @@ export class DashboardComponent implements OnInit {
 
     constructor(private userService: UserService, private modalService: NgbModal) {}
 
-    private resultsCount;
-    private compareCount;
-    private results;
-    private comparisons;
+    resultsCount;
+    compareCount;
+    results;
+    comparisons;
 
     constructResults(resultData){
         this.results = resultData.bench_results;

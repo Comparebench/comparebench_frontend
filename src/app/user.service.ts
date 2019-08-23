@@ -10,12 +10,12 @@ export class UserService {
 
     constructor(private http:HttpClient) {}
 
-    private _loginUrl: string = UserService.getHostname() + "/login";
-    private _resultsUrl: string = UserService.getHostname() + "/yourresults";
-    private _resultUrl: string = UserService.getHostname() + "/benchmark";
-    private _compareUrl: string = UserService.getHostname() + "/compare";
-    private _authUrl: string = UserService.getHostname() + "/authenticate";
-    private _logoutUrl: string = UserService.getHostname() + "/logout";
+    _loginUrl: string = UserService.getHostname() + "/login";
+    _resultsUrl: string = UserService.getHostname() + "/yourresults";
+    _resultUrl: string = UserService.getHostname() + "/benchmark";
+    _compareUrl: string = UserService.getHostname() + "/compare";
+    _authUrl: string = UserService.getHostname() + "/authenticate";
+    _logoutUrl: string = UserService.getHostname() + "/logout";
     public loggedIn = new Subject<boolean>();
     public user;
 

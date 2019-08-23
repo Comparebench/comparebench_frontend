@@ -8,8 +8,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    private email;
-    private password;
+    email;
+    password;
 
     constructor(private userService: UserService, private router: Router) {
     }

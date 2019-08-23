@@ -7,7 +7,7 @@ import {UserService} from "./user.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    private initLoading = true;
+    public initLoading = true;
     constructor(private userService: UserService) {
 
     }

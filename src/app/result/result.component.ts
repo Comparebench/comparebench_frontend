@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {IResponse} from "../interfaces/response";
 import {UserService} from "../user.service";
-import {Subscription} from "rxjs";
+import {IBenchmark} from "../interfaces/benchmark";
 
 @Component({
   selector: 'app-result',
@@ -11,9 +10,10 @@ import {Subscription} from "rxjs";
 })
 export class ResultComponent implements OnInit {
 
-    private benchmark = {gpu: []};
-    private created_by_user = {};
-    private resultId;
+    benchmark: IBenchmark;
+
+    created_by_user = {uid: 'any', display_name: ''};
+    resultId;
 
     // this.resultId = params
 
@@ -21,10 +21,16 @@ export class ResultComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.resultId)
-        let response;
+        console.log(this.resultId);
         this.userService.getResult(this.route.snapshot.paramMap.get('resultId')).subscribe((response) => {
-            this.benchmark = response['benchmark'];
+            this.benchmark = response['benchmark'].map(src => {
+                return <IBenchmark> {
+                    title: src.title,
+                    uid: src.uid,
+                    gpu: src.gpu,
+                    mem_total: src.mem_total
+                };
+            });
             console.log(response)
         })
     }
