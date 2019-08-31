@@ -1,63 +1,82 @@
 <div class="page-wrapper">
     <div class="container-fluid">
-
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3>Add a new benchmark profile</h3>
+            </div>
+        </div>
         <div class="row" id="validation">
             <div class="col-12">
                 <div class="card wizard-content">
                     <div class="card-body">
-                        <h4 class="card-title">Add a new benchmark profile</h4>
                         <!--h6 class="card-subtitle"></h6-->
-                        <form class="add-benchmark-wizard wizard-circle">
-                            <!-- Step 1 -->
-                            <h6>Benchmark Info</h6>
-                            <section>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="title">Benchmark Title: <span class="danger">*</span> </label>
-                                            <input type="text" class="form-control required" id="title" name="title">
-                                        </div>
+                        <aw-wizard [navBarLayout]="'large-empty-symbols'">
+                            <aw-wizard-step stepTitle="Benchmark Info" [navigationSymbol]="{ symbol: '1' }">
+                                <div class="row floating-labels m-t-40">
+                                    <div class="form-group m-b-40" style="width: 50%;">
+                                        <input type="text" [(ngModel)]="title" class="form-control" id="input1">
+                                        <span class="bar"></span>
+                                        <label for="input1">Benchmark Title</label>
                                     </div>
-
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 ">
                                         <div class="bt-switch">
-                                            <label for="benchmark-private">Private:</label>
-                                            <input type="checkbox" id="benchmark-private" name="private" data-off-color="primary" data-off-text="Public">
+                                            <div class="switch">
+                                                <label>
+                                                    Public
+                                                    <input type="checkbox" [(ngModel)]="isPrivate" checked="">
+                                                    <span class="lever"></span>
+                                                    Private
+                                                </label>
+
+                                            </div>
+                                            <span *ngIf="isPrivate">Benchmark is Private</span>
                                         </div>
                                     </div>
-
                                 </div>
-
-
-                            </section>
-                            <!-- Step 2 -->
-                            <h6>Benchmark Specs</h6>
-                            <section>
+                                <button type="button" awNextStep class="btn btn-info" style="float: right">Next</button>
+                            </aw-wizard-step>
+                            <aw-wizard-step stepTitle="Benchmark Specs" [navigationSymbol]="{ symbol: '2' }">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="cpuz_file">CPUZ Import :</label>
-                                            <input type="file" class="form-control required" name="cpuz_html" id="cpuz_file">
+                                            <label for="">CPUZ Import :</label>
+                                            <input type="file" class="form-control required" name="cpuz_html"
+                                                   id="">
                                         </div>
 
                                     </div>
                                 </div>
-                            </section>
-                            <!-- Step 3 -->
-                            <h6>Benchmark Result Upload</h6>
-                            <section>
+                                <button type="button" awPreviousStep class="btn btn-info">Previous</button>
+                                <button type="button" awNextStep class="btn btn-info" style="float:right;">Next</button>
+                            </aw-wizard-step>
+                            <aw-wizard-step stepTitle="Benchmark Result Upload" [navigationSymbol]="{ symbol: '3' }">
                                 <div class="row col-md-12">
 
                                     <div style="margin-top: 10px;margin-bottom: 15px;" class="col-md-12">
-                                        <button class="add-benchmark btn btn-info">Add a benchmark</button>
+                                        <table>
+                                            <tr *ngFor="let benchmark of addedBenchmarks">
+                                                <td>{{benchmark.benchmarkType}}</td>
+                                            </tr>
+
+                                        </table>
+                                        <select name="manager" id="manager" [(ngModel)]="currentBenchmarkType" class="form-control" required>
+                                          <option disabled [ngValue]="undefined">Select a benchmark</option>
+                                          <option *ngFor="let benchmarkType of supportedBenchmarks" [ngValue]="benchmarkType[0]">{{benchmarkType[1]}}</option>
+                                        </select>
+
+                                        <button (click)="addBenchmark()" class="add-benchmark btn btn-info">
+                                            Add a benchmark
+                                        </button>
                                     </div>
                                     <div class="benchmarks-wrap col-md-6"></div>
 
                                 </div>
-                            </section>
-                        </form>
+                                <button type="button" awPreviousStep class="btn btn-info">Previous</button>
+                                <button type="button" class="btn btn-info" style="float: right">Finish</button>
+                            </aw-wizard-step>
+                        </aw-wizard>
                     </div>
                 </div>
             </div>
@@ -65,5 +84,3 @@
 
     </div>
 </div>
-
-<script src="http://localhost:8180/static/js/wizard.js"></script>

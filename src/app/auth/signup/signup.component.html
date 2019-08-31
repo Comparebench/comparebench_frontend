@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h3>Log In</h3>
+                <h3>Create an Account</h3>
             </div>
         </div>
         <div class="row">
@@ -15,11 +15,9 @@
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="password" [(ngModel)]="password" required placeholder="Password" name="password"/>
 
-                        <button class="btn btn-default" name="form.submitted" (click)="login()" value="Log In" style="margin: 10px 0 5px 0;">Submit</button>
-
+                        <button class="btn btn-default" name="form.submitted" (click)="signup()" value="Submit" style="margin: 10px 0 5px 0;">Submit</button>
                     </form>
-                    <h6>Don't have an account? <a routerLink="/signup" >Sign Up</a></h6>
-<!--                <h6>Forgot your password? <a href="/resetpassword">Reset Password</a></h6>-->
+                    <h6 class="error" [hidden]="!errorMessage">{{errorMessage}}</h6>
                 </div>
             </div>
         </div>

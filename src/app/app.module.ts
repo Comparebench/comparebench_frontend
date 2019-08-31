@@ -16,6 +16,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ComparisonComponent } from './comparison/comparison.component';
 import {ArchwizardModule} from "angular-archwizard";
+import {SignupComponent} from "./auth/signup/signup.component";
+import { RoadmapComponent } from './roadmap/roadmap.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {ArchwizardModule} from "angular-archwizard";
     ResultComponent,
     NavigationComponent,
     LoginComponent,
-    ComparisonComponent
+    ComparisonComponent,
+    SignupComponent,
+    RoadmapComponent
   ],
     imports: [
         BrowserModule,

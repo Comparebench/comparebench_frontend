@@ -6,6 +6,8 @@ import {ResultComponent} from "./result/result.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {ComparisonComponent} from "./comparison/comparison.component";
 import {BenchmarkComponent} from "./benchmark/benchmark.component";
+import {SignupComponent} from "./auth/signup/signup.component";
+import {RoadmapComponent} from "./roadmap/roadmap.component";
 
 const routes: Routes = [
     {
@@ -41,6 +43,16 @@ const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'signup',
+        component: SignupComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'roadmap',
+        component: RoadmapComponent,
         pathMatch: 'full'
     },
     { path: '**', redirectTo: ''}

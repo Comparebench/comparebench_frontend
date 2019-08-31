@@ -2506,7 +2506,6 @@ body.modal-open {
 }
 
 .roadmap-panel {
-  background-color: #fff;
   border-radius: 10px;
   padding: 15px 25px;
   position: relative;
@@ -2535,7 +2534,6 @@ body.modal-open {
   letter-spacing: 1px;
 }
 .roadmap-features {
-  color: #337ab7;
   font-weight: 600;
   letter-spacing: 1px;
   margin: 40px 0 25px;
@@ -2543,14 +2541,14 @@ body.modal-open {
 }
 
 .roadmap-features-item {
-  border-top: 1px solid #e1f1ff;
+  border-top: 1px solid #202124;
   font-size: 12px;
   line-height: 1.5;
   padding: 15px 0;
 }
 
 .roadmap-features-item:last-child {
-  border-bottom: 1px solid #e1f1ff;
+  border-bottom: 1px solid #202124;
 }
 
 .roadmap-price {
@@ -2648,4 +2646,21 @@ h1, h2, h3, h4, h5, h6{
 
 .preloader{
     background-color: #202124;
+}
+
+.error {
+    color: red;
+}
+
+aw-wizard-navigation-bar.horizontal.large-empty-symbols ul.steps-indicator li.current .step-indicator,aw-wizard-navigation-bar.horizontal.large-empty-symbols ul.steps-indicator li.editing .step-indicator {
+    color: white !important;
+    border: 2px solid #009efb !important;
+}
+
+.floating-labels .focused label {
+    color: white !important;
+}
+.form-control, .form-control:focus{
+    background-color: unset;
+    color: #babcbd;
 }

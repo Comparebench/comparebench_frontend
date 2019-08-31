@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "^8.2.3",
     "@angular/router": "^8.2.3",
     "@ng-bootstrap/ng-bootstrap": "4.2.1",
+    "@nguniversal/express-engine": "^8.1.1",
     "angular-archwizard": "^4.0.0",
     "chart.js": "^2.8.0",
     "core-js": "^2.5.4",
