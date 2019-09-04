@@ -2664,3 +2664,8 @@ aw-wizard-navigation-bar.horizontal.large-empty-symbols ul.steps-indicator li.cu
     background-color: unset;
     color: #babcbd;
 }
+
+.select2-container--default .select2-selection--multiple, .select2-dropdown {
+    background-color: #202124;
+    border: 1px solid #4a4a4a;
+}

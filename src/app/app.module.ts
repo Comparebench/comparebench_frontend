@@ -18,6 +18,8 @@ import { ComparisonComponent } from './comparison/comparison.component';
 import {ArchwizardModule} from "angular-archwizard";
 import {SignupComponent} from "./auth/signup/signup.component";
 import { RoadmapComponent } from './roadmap/roadmap.component';
+import { ComparisonCreationComponent } from './comparison-creation/comparison-creation.component';
+import {Select2Module} from "ng2-select2";
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { RoadmapComponent } from './roadmap/roadmap.component';
     LoginComponent,
     ComparisonComponent,
     SignupComponent,
-    RoadmapComponent
+    RoadmapComponent,
+    ComparisonCreationComponent
   ],
     imports: [
         BrowserModule,
@@ -39,7 +42,8 @@ import { RoadmapComponent } from './roadmap/roadmap.component';
         ChartsModule,
         AppRoutingModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        Select2Module
     ],
   providers: [
       CookieService,

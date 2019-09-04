@@ -8,6 +8,7 @@ import {ComparisonComponent} from "./comparison/comparison.component";
 import {BenchmarkComponent} from "./benchmark/benchmark.component";
 import {SignupComponent} from "./auth/signup/signup.component";
 import {RoadmapComponent} from "./roadmap/roadmap.component";
+import {ComparisonCreationComponent} from "./comparison-creation/comparison-creation.component";
 
 const routes: Routes = [
     {
@@ -36,6 +37,11 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
+        path: 'compare/add',
+        component: ComparisonCreationComponent,
+        pathMatch: 'full'
+    },
+    {
         path: 'compare/:compareId',
         component: ComparisonComponent,
         pathMatch: 'full'
@@ -55,7 +61,7 @@ const routes: Routes = [
         component: RoadmapComponent,
         pathMatch: 'full'
     },
-    { path: '**', redirectTo: ''}
+    //{ path: '**', redirectTo: ''}
 ];
 
 @NgModule({

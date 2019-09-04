@@ -43,7 +43,7 @@
                                         <div class="form-group">
                                             <label for="">CPUZ Import :</label>
                                             <input type="file" class="form-control required" name="cpuz_html"
-                                                   id="">
+                                                   id="" (change)="cpuzUpload($event.target.files)">
                                         </div>
 
                                     </div>
@@ -53,28 +53,35 @@
                             </aw-wizard-step>
                             <aw-wizard-step stepTitle="Benchmark Result Upload" [navigationSymbol]="{ symbol: '3' }">
                                 <div class="row col-md-12">
-
                                     <div style="margin-top: 10px;margin-bottom: 15px;" class="col-md-12">
-                                        <table>
+                                        <table style="margin-bottom: 15px;">
                                             <tr *ngFor="let benchmark of addedBenchmarks">
-                                                <td>{{benchmark.benchmarkType}}</td>
+                                                <td>{{benchmark.type}}</td>
+                                                <td *ngIf="benchmark.name != 3">{{benchmark.name}}</td>
+                                                <td *ngIf="benchmark.score == 3">{{benchmark.score}}</td>
                                             </tr>
 
                                         </table>
-                                        <select name="manager" id="manager" [(ngModel)]="currentBenchmarkType" class="form-control" required>
+                                        <select style="width: 25%;padding-bottom: 10px;min-width: 150px;" name="manager" id="manager" (change)="benchmarkTypeChanged()" [(ngModel)]="currentBenchmarkType" class="form-control" required>
                                           <option disabled [ngValue]="undefined">Select a benchmark</option>
                                           <option *ngFor="let benchmarkType of supportedBenchmarks" [ngValue]="benchmarkType[0]">{{benchmarkType[1]}}</option>
                                         </select>
 
-                                        <button (click)="addBenchmark()" class="add-benchmark btn btn-info">
-                                            Add a benchmark
-                                        </button>
-                                    </div>
-                                    <div class="benchmarks-wrap col-md-6"></div>
+                                        <div *ngIf="currentBenchmarkType == 1" style="padding-bottom: 10px;padding-top: 10px">
+                                            <input style="min-width: 250px;width: 50%;" type="file" class="form-control required" name="cpuz_html" id="3dmark" (change)="handleFileInput($event.target.files)">
+                                        </div>
+                                        <div *ngIf="currentBenchmarkType == 3" style="padding-bottom: 10px;padding-top: 10px">
+                                            <input type="text" placeholder="Cinebench Score" class="form-control required" name="cpuz_html" id="cinebench" [(ngModel)]="currentManualScore">
 
+                                        </div>
+
+                                            <button (click)="addBenchmark()" [hidden]="adding" class="add-benchmark btn btn-info">
+                                                Add benchmark
+                                            </button>
+                                    </div>
                                 </div>
                                 <button type="button" awPreviousStep class="btn btn-info">Previous</button>
-                                <button type="button" class="btn btn-info" style="float: right">Finish</button>
+                                <button type="button" class="btn btn-info" style="float: right" (click)="completeBenchmark()">Finish</button>
                             </aw-wizard-step>
                         </aw-wizard>
                     </div>

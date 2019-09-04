@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BenchmarkService} from "../benchmark.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-benchmark',
@@ -8,16 +9,61 @@ import {BenchmarkService} from "../benchmark.service";
 })
 export class BenchmarkComponent implements OnInit {
     title;
+    adding = true;
     isPrivate = false;
     addedBenchmarks = [];
     supportedBenchmarks;
     currentBenchmarkType;
+    currentUploadFile: File = null;
+    currentManualScore: string = '';
+    cpuzFile: File = null;
+    tdmarkFiles = [];
+    cinebenchScore= '';
 
-    constructor(private benchmarkService:BenchmarkService) {
+
+    constructor(private benchmarkService:BenchmarkService, private router: Router) {
+
     }
     addBenchmark(){
-        this.addedBenchmarks.push({'benchmarkType': this.currentBenchmarkType});
+        console.log('addbenchmark')
+
+        if(this.currentBenchmarkType === '1'){
+            this.addedBenchmarks.push({'type': '3DMark', name:this.currentUploadFile.name});
+            this.tdmarkFiles.push(this.currentUploadFile);
+            this.currentUploadFile = undefined
+        }
+        else if(this.currentBenchmarkType === '3'){
+            this.cinebenchScore = this.currentManualScore
+        }
+        this.adding = true;
         this.currentBenchmarkType = undefined
+    }
+
+    handleFileInput(files: FileList) {
+        this.currentUploadFile = files.item(0);
+        this.adding = false
+    }
+    cpuzUpload(files: FileList) {
+        this.cpuzFile = files.item(0);
+
+    }
+    completeBenchmark(){
+        const formData: FormData = new FormData();
+        for(let i=0;i<this.tdmarkFiles.length;i++){
+            formData.append('3dmark_upload', this.tdmarkFiles[i])
+        }
+        formData.append('title', this.title);
+        formData.append('cinebench_score', this.cinebenchScore);
+        formData.append('private', this.isPrivate.toString());
+        formData.append('cpuz_html', this.cpuzFile);
+        this.benchmarkService.addBenchmark(formData).subscribe((response) => {
+            this.router.navigate(['/benchmark', response['benchmark_id']])
+        })
+    }
+    benchmarkTypeChanged(){
+        if(this.currentBenchmarkType === '3'){
+            this.adding=false
+        }
     }
     ngOnInit() {
         this.benchmarkService.getBenchmarkTypes().subscribe((response) => {

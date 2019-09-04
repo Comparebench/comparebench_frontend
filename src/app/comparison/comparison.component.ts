@@ -71,7 +71,7 @@ export class ComparisonComponent implements OnInit {
 
         for (let i = 0; i < graphData.length; i++) {
             let bench_key = Object.keys(graphData[i])[0];
-            CinebenchOpts.graphLabels.push(graphData[i][bench_key].benchmarks.model);
+            CinebenchOpts.graphLabels.push(graphData[i][bench_key].benchmarks.model + ' (' + graphData[i][bench_key].benchmarks.title + ')');
             if (graphData[i][bench_key].benchmarks.cinebench_score === "0") {
                 return false
             }
@@ -103,13 +103,13 @@ export class ComparisonComponent implements OnInit {
                 append = false;
             }
             if (append) {
-                FrequencyOpts.graphLabels.push(graphData[i][bench_key].benchmarks.model);
+                FrequencyOpts.graphLabels.push(graphData[i][bench_key].benchmarks.model + ' (' + graphData[i][bench_key].benchmarks.title + ')');
                 FrequencyOpts.graphData.push(score);
                 FrequencyOpts.graphColors.push('rgba(54, 162, 235, 0.2)');
                 FrequencyOpts.graphBorderColors.push('rgba(54, 162, 235, 1)');
             }
             else{
-                FrequencyOpts.graphLabels.unshift(graphData[i][bench_key].benchmarks.model);
+                FrequencyOpts.graphLabels.unshift(graphData[i][bench_key].benchmarks.model + ' (' + graphData[i][bench_key].benchmarks.title + ')');
                 FrequencyOpts.graphData.unshift(score);
                 FrequencyOpts.graphColors.unshift('rgba(54, 162, 235, 0.2)');
                 FrequencyOpts.graphBorderColors.unshift('rgba(54, 162, 235, 1)');
