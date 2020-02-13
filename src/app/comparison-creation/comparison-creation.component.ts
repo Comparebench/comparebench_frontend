@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {IBenchmark} from "../interfaces/benchmark";
 import {ActivatedRoute} from "@angular/router";
-import {UserService} from "../user.service";
 import {BenchmarkService} from "../benchmark.service";
-import {Select2OptionData} from "ng2-select2";
 
 @Component({
   selector: 'app-comparison-creation',

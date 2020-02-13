@@ -26,8 +26,8 @@
               "src/styles.css"
             ],
             "scripts": [
-                "node_modules/chart.js/dist/Chart.js",
-                "src/assets/js/custom.js"
+              "node_modules/chart.js/dist/Chart.js",
+              "src/assets/js/custom.js"
             ],
             "es5BrowserSupport": true
           },
@@ -135,5 +135,8 @@
       }
     }
   },
-  "defaultProject": "comparebench-frontend"
+  "defaultProject": "comparebench-frontend",
+  "cli": {
+    "analytics": "c240b0a1-1e62-4334-97e7-a70d501fda80"
+  }
 }

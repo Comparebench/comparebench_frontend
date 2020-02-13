@@ -19,7 +19,6 @@ import {ArchwizardModule} from "angular-archwizard";
 import {SignupComponent} from "./auth/signup/signup.component";
 import { RoadmapComponent } from './roadmap/roadmap.component';
 import { ComparisonCreationComponent } from './comparison-creation/comparison-creation.component';
-import {Select2Module} from "ng2-select2";
 
 @NgModule({
   declarations: [
@@ -43,7 +42,6 @@ import {Select2Module} from "ng2-select2";
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
-        Select2Module
     ],
   providers: [
       CookieService,
