@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, of, Subject, Subscription} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {ILoginResponse, IResponse} from "./interfaces/response";
 import {HttpClient} from "@angular/common/http";
 
@@ -49,10 +49,10 @@ export class UserService {
         return this.loggedIn
     }
 
-    static getHostname() {
-        // return 'https://comparebench.com/api'
+    static getHostname(): any {
+        return 'https://comparebench.com/api'
         // return 'http://localhost:8180/api'
-        return "/api"
+        // return "/api"
     }
 }
 

@@ -35,7 +35,7 @@ import { ComparisonCreationComponent } from './comparison-creation/comparison-cr
     ComparisonCreationComponent
   ],
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({ appId: 'comparebench-frontend' }),
         NgbModule,
         ArchwizardModule,
         ChartsModule,
