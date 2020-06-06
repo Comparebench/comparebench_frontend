@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BenchmarkService} from "../benchmark.service";
 import {Router} from "@angular/router";
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-benchmark',
@@ -21,8 +22,8 @@ export class BenchmarkComponent implements OnInit {
     cinebenchScore= '';
 
 
-    constructor(private benchmarkService:BenchmarkService, private router: Router) {
-
+    constructor(private benchmarkService:BenchmarkService, private router: Router, private meta: Meta) {
+        this.meta.addTag({ name: 'description', content: 'CompareBench Description!' });
     }
     addBenchmark(){
         console.log('addbenchmark')
