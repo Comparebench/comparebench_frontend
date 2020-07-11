@@ -19,6 +19,8 @@ import {ArchwizardModule} from "angular-archwizard";
 import {SignupComponent} from "./auth/signup/signup.component";
 import { RoadmapComponent } from './roadmap/roadmap.component';
 import { ComparisonCreationComponent } from './comparison-creation/comparison-creation.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ResultsComponent } from './results/results.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ComparisonCreationComponent } from './comparison-creation/comparison-cr
     ComparisonComponent,
     SignupComponent,
     RoadmapComponent,
-    ComparisonCreationComponent
+    ComparisonCreationComponent,
+    ProfileComponent,
+    ResultsComponent
   ],
     imports: [
         BrowserModule,

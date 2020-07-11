@@ -3,19 +3,14 @@
         <!-- ============================================================== -->
         <!-- Logo -->
         <!-- ============================================================== -->
-        <div class="navbar-header">
-            <a class="navbar-brand" routerLink="/">
-                <!-- Logo icon --><b>
-                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                    <!-- Dark Logo icon -->
-
-                    <!-- Light Logo icon -->
-                    <img src="/assets/logo_button.png" alt="homepage" class="light-logo" />
-                </b>
+        <div class="navbar-header" style="z-index: 99999;cursor:pointer;">
+            <span class="navbar-brand" [routerLink]="['/']">
+                <!-- Logo icon -->
+                <img src="/assets/logo_button.png" alt="homepage" class="light-logo" />
                 <!--End Logo icon -->
-                <!-- Logo text --><span>
-                 <!-- dark Logo text -->
-                <span style="color:white;">CompareBench</span></span> <span class="badge badge-info">Beta</span> </a>
+                <!-- Logo text -->
+                <span style="color:white;">CompareBench</span> <span class="badge badge-info">Beta</span>
+            </span>
         </div>
         <!-- ============================================================== -->
         <!-- End Logo -->

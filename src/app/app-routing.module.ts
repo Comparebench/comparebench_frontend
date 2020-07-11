@@ -9,6 +9,8 @@ import {BenchmarkComponent} from "./benchmark/benchmark.component";
 import {SignupComponent} from "./auth/signup/signup.component";
 import {RoadmapComponent} from "./roadmap/roadmap.component";
 import {ComparisonCreationComponent} from "./comparison-creation/comparison-creation.component";
+import {ProfileComponent} from "./profile/profile.component";
+import {ResultsComponent} from "./results/results.component";
 
 const routes: Routes = [
     {
@@ -61,11 +63,23 @@ const routes: Routes = [
         component: RoadmapComponent,
         pathMatch: 'full'
     },
+    {
+        path: 'profile',
+        component: ProfileComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'results',
+        component: ResultsComponent,
+        pathMatch: 'full'
+    },
     //{ path: '**', redirectTo: ''}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabled'
+})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

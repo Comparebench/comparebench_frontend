@@ -1,0 +1,109 @@
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Profile</h3>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Column -->
+            <div class="col-lg-4 col-xlg-3 col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <center class="m-t-30"><img src="/static/233.png" class="img-square" width="150"/>
+                            <h4 class="card-title m-t-10">{{user.name}}</h4>
+                            <div class="row text-center justify-content-md-center">
+                                <div class="col-4"><i class="mdi mdi-desktop-tower"></i> {{benchmark_count}}</div>
+                                <div class="col-4"><i class="mdi mdi-compare"></i> {{compare_count}}</div>
+                            </div>
+                        </center>
+                    </div>
+                    <div>
+                        <hr>
+                    </div>
+                    <div class="card-body">
+                                <span *ngIf="is_logged_in_user">
+                                    <small class="text-muted">Email address </small>
+                                    <h6>{{user.username}}</h6>
+                                </span>
+
+                        <!--small class="text-muted p-t-30 db">Twitter</small>
+                        <h6></h6-->
+
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-lg-8 col-xlg-9 col-md-7">
+                <div class="card">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs profile-tab" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profile</a>
+                        </li>
+                        <li class="nav-item" *ngIf="is_logged_in_user"><a class="nav-link"
+                                                                                          data-toggle="tab"
+                                                                                          href="#settings" role="tab">Settings</a>
+                        </li>
+                        <li class="nav-item" *ngIf="is_logged_in_user"><a class="nav-link"
+                                                                                          data-toggle="tab"
+                                                                                          href="#changepassword"
+                                                                                          role="tab">Change Password</a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!--second tab-->
+                        <div class="tab-pane active" id="profile" role="tabpanel">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3 col-xs-6 b-r"><strong>Display Name</strong>
+                                        <br>
+                                        <p class="text-muted">{{user.display_name}}</p>
+
+                                    </div>
+                                </div>
+                                <hr>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="settings" role="tabpanel" *ngIf="is_logged_in_user">
+                            <div class="card-body">
+                                <form class="update-profile-form form-horizontal form-material">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Display Name</label>
+                                        <div class="col-md-12">
+                                            <input type="text" name="display_name" required
+                                                   placeholder="${user.display_name}"
+                                                   class="form-control form-control-line">
+                                        </div>
+                                    </div>
+                                    <!--div class="form-group">
+                                        <label for="example-email" class="col-md-12">Email</label>
+                                        <div class="col-md-12">
+                                            <input type="email" placeholder="user.username}" class="form-control form-control-line" id="example-email">
+                                        </div>
+                                    </div-->
+
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-success update-profile-submit">Update Profile
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="changepassword" role="tabpanel"
+                             *ngIf="is_logged_in_user">
+                            <div class="card-body"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Column -->
+        </div>
+
+    </div>
+</div>
