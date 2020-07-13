@@ -23,6 +23,7 @@ export class ResultComponent implements OnInit {
     ngOnInit() {
         this.userService.getResult(this.route.snapshot.paramMap.get('resultId')).subscribe((response) => {
             this.benchmark = new IBenchmark(response['benchmark'])
+            this.created_by_user = response['created_by_user']
         })
     }
 

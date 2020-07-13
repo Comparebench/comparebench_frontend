@@ -2,10 +2,10 @@
     <div class="container-fluid">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h3 class="text-themecolor">{{benchmark.title}}</h3>
+                <h3 class="text-themecolor" style="color: #babcbd !important;">{{benchmark.title}}</h3>
             </div>
             <div class="col-md-7 align-self-center">
-                <h4 style="float: right;">Submitted by: <a href="/user/{{created_by_user.uid}}" target="_blank">{{created_by_user.display_name}}</a></h4>
+                <h4 style="float: right;">Submitted by: <a [routerLink]="['/profile', created_by_user.uid]">{{created_by_user.display_name}}</a></h4>
             </div>
         </div>
         <div class="row ">
@@ -84,14 +84,14 @@
                                     <td style="text-align: right"><a href="https://s3.amazonaws.com/ares-benchmarks/heaven/${user.uid}/${benchmark.rid}.html"><button type="button" class="btn btn-sm waves-effect waves-light btn-info"><i class="mdi mdi-download"></i></button></a></td>
                                 </tr>
                                 <span *ngIf="benchmark.tdmark">
-<!--                                    <span *ngFor="let tdmark of benchmark.tdmark">-->
-<!--                                        <tr>-->
-<!--                                           <td>{{tdmark.version}}</td>-->
-<!--                                           <td>{{tdmark.final_score}}</td>-->
-<!--                                           <td style="text-align: right"><a href="https://s3.amazonaws.com/ares-benchmarks/3dmark/{{user.uid}}/{{benchmark.rid}}/{{tdmark.version}}/result.3dmark-result"><button type="button" class="btn btn-sm waves-effect waves-light btn-info"><i class="mdi mdi-download"></i></button></a></td>-->
-<!--                                        </tr>-->
+                                    <span *ngFor="let tdmark of benchmark.tdmark">
+                                        <tr>
+                                           <td>{{tdmark.version}}</td>
+                                           <td>{{tdmark.final_score}}</td>
+                                           <td style="text-align: right"><a href="https://s3.amazonaws.com/ares-benchmarks/3dmark/{{created_by_user.uid}}/{{benchmark.rid}}/{{tdmark.version}}/result.3dmark-result"><button type="button" class="btn btn-sm waves-effect waves-light btn-info"><i class="mdi mdi-download"></i></button></a></td>
+                                        </tr>
 
-<!--                                    </span>-->
+                                    </span>
                                 </span>
                             </tbody>
                         </table>
