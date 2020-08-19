@@ -16,6 +16,7 @@ export class UserService {
     _resultUrl: string = UserService.getHostname() + "/benchmark";
     _compareUrl: string = UserService.getHostname() + "/compare";
     _authUrl: string = UserService.getHostname() + "/authenticate";
+    _profileUrl: string = UserService.getHostname() + "/user";
     _logoutUrl: string = UserService.getHostname() + "/logout";
     public loggedIn = new Subject<boolean>();
     public user;
@@ -32,6 +33,9 @@ export class UserService {
 
     getResult(resultId): Observable<IResponse> {
         return this.http.post<IResponse>(this._resultUrl, {result_id: resultId}, {})
+    }
+    getProfile(uid?): Observable<IResponse> {
+        return this.http.post<IResponse>(this._profileUrl, {uid: uid}, {})
     }
     getComparison(compareId): Observable<IResponse> {
         return this.http.post<IResponse>(this._compareUrl, {compare_id: compareId}, {})
@@ -51,8 +55,8 @@ export class UserService {
 
     static getHostname() {
         // return 'https://comparebench.com/api'
-        // return 'http://localhost:8180/api'
-        return "/api"
+        return 'http://localhost:8180/api'
+        // return "/api"
     }
 }
 

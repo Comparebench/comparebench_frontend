@@ -69,6 +69,11 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
+        path: 'profile',
+        component: ProfileComponent,
+        pathMatch: 'full'
+    },
+    {
         path: 'results',
         component: ResultsComponent,
         pathMatch: 'full'
