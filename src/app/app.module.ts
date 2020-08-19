@@ -21,6 +21,7 @@ import { RoadmapComponent } from './roadmap/roadmap.component';
 import { ComparisonCreationComponent } from './comparison-creation/comparison-creation.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ResultsComponent } from './results/results.component';
+import {NgSelect2Module} from "ng-select2";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ResultsComponent } from './results/results.component';
         BrowserModule,
         NgbModule,
         ArchwizardModule,
+        NgSelect2Module,
         ChartsModule,
         AppRoutingModule,
         HttpClientModule,

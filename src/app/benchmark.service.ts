@@ -13,10 +13,14 @@ export class BenchmarkService {
 
     _benchmarkTypesUrl: string = UserService.getHostname() + "/benchmarks/types";
     _addBenchmarkUrl: string = UserService.getHostname() + "/benchmarks/add";
-    _benchmarksUrl: string = UserService.getHostname() + "/results/retrieve";
+    _createComparisonUrl: string = UserService.getHostname() + "/benchmarks/add_comparison";
+    _benchmarksUrl: string = UserService.getHostname() + "/benchmarks/results";
 
     getBenchmarkTypes(): Observable<ILoginResponse> {
         return this.http.post<ILoginResponse>(this._benchmarkTypesUrl, {}, {})
+    }
+    createComparison(benchmarks, title, desc): Observable<IResponse> {
+        return this.http.post<IResponse>(this._createComparisonUrl, {benchmarks: benchmarks, title: title, desc: desc}, {})
     }
     addBenchmark(benchmark): Observable<IResponse> {
         return this.http.post<IResponse>(this._addBenchmarkUrl, benchmark, {})

@@ -12,11 +12,11 @@ export class UserService {
 
     _loginUrl: string = UserService.getHostname() + "/login";
     _signUpUrl: string = UserService.getHostname() + "/signup";
-    _resultsUrl: string = UserService.getHostname() + "/yourresults";
+    _resultsUrl: string = UserService.getHostname() + "/account/results";
+    _profileUrl: string = UserService.getHostname() + "/account/profile";
     _resultUrl: string = UserService.getHostname() + "/benchmark";
-    _compareUrl: string = UserService.getHostname() + "/compare";
+    _compareUrl: string = UserService.getHostname() + "/benchmarks/get_comparison";
     _authUrl: string = UserService.getHostname() + "/authenticate";
-    _profileUrl: string = UserService.getHostname() + "/user";
     _logoutUrl: string = UserService.getHostname() + "/logout";
     public loggedIn = new Subject<boolean>();
     public user;
@@ -55,8 +55,8 @@ export class UserService {
 
     static getHostname() {
         // return 'https://comparebench.com/api'
-        // return 'http://localhost:8180/api'
-        return "/api"
+        return 'http://localhost:8180/api'
+        // return "/api"
     }
 }
 

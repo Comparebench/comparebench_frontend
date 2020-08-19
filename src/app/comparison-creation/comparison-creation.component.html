@@ -5,20 +5,20 @@
                 <div class="card-body">
                     <form class="floating-labels comparison">
                         <div class="form-group m-b-40">
-<!--                            <select2 class="select2 m-b-10 select2-multiple benchmark-list" [data]='benchmarks' [width]="'100%'" [options]="options"></select2>-->
+                            <ng-select2 class="-b-10 benchmark-list" [data]="benchmarks" [width]="'100%'" [options]="options"></ng-select2>
                         </div>
 
                         <div class="form-group m-b-40">
-                            <input type="text" class="form-control" name="compare-title" id="compare-title">
+                            <input type="text" class="form-control" [(ngModel)]="title" name="compare-title" id="compare-title">
                             <span class="bar"></span>
-                            <label for="compare-title">Benchmark Title</label>
+                            <label for="compare-title" >Benchmark Title</label>
                         </div>
                         <div class="form-group m-b-40">
-                            <textarea rows="5" class="form-control" name="compare-description" id="compare-description"></textarea>
+                            <textarea rows="5" class="form-control" [(ngModel)]="description" name="compare-description" id="compare-description"></textarea>
                             <span class="bar"></span>
-                            <label for="compare-description">Description</label>
+                            <label for="compare-description" >Description</label>
                         </div>
-                        <button class="btn btn-sm btn-info create-compare" type="submit">Create Comparison</button>
+                        <button class="btn btn-sm btn-info create-compare" type="submit" (click)="create()">Create Comparison</button>
                     </form>
                 </div>
             </div>
