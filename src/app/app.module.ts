@@ -22,6 +22,8 @@ import { ComparisonCreationComponent } from './comparison-creation/comparison-cr
 import { ProfileComponent } from './profile/profile.component';
 import { ResultsComponent } from './results/results.component';
 import {NgSelect2Module} from "ng-select2";
+import { CompareBarComponent } from './compare-bar/compare-bar.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -37,10 +39,12 @@ import {NgSelect2Module} from "ng-select2";
     RoadmapComponent,
     ComparisonCreationComponent,
     ProfileComponent,
-    ResultsComponent
+    ResultsComponent,
+    CompareBarComponent
   ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         NgbModule,
         ArchwizardModule,
         NgSelect2Module,
