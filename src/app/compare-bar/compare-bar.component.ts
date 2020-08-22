@@ -71,6 +71,7 @@ export class CompareBarComponent implements OnInit {
             //         continue
             //     }
             // }
+            this.isOpen = true;
             this.benchmarks = response
         })
     }
