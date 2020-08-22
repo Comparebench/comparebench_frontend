@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../user.service";
 import * as Chart from 'chart.js';
+import {IBenchmark} from "../interfaces/benchmark";
 
 @Component({
   selector: 'app-comparison',
@@ -16,53 +17,57 @@ export class ComparisonComponent implements OnInit {
     fxExGraphOpts;
     fxExPhysGraphOpts;
     fxUlGraphOpts;
-
+    title;
+    profiles: IBenchmark[] = [];
     constructor(private route: ActivatedRoute, private userService: UserService) {
     }
 
      ngOnInit() {
-        this.graphOpts = {
-            graphLabels: [],
-            graphData: [],
-            graphColors: [],
-            graphBorderColors: [],
-            graphTitle: '',
-            graphStep: 100
-        };
-        this.userService.getComparison(this.route.snapshot.paramMap.get('compareId')).subscribe((response) => {
-            Chart.defaults.global.defaultFontColor = "#babcbd";
-            this.benchmarks = response['benchmarks'];
-            console.log(response);
-            // Generate graph options
-                let cbGraphOpts = this.generateCinebenchOpts(this.benchmarks);
-                let freqGraphOpts = this.generateFrequencyOpts(this.benchmarks);
+         this.graphOpts = {
+             graphLabels: [],
+             graphData: [],
+             graphColors: [],
+             graphBorderColors: [],
+             graphTitle: '',
+             graphStep: 100
+         };
+         this.userService.getComparison(this.route.snapshot.paramMap.get('compareId')).subscribe((response) => {
+             this.title = response['summary']
+             for(let i=0;i<response['results'].length;i++){
+                 this.profiles.push(response['results'][i]['profile'])
+             }
 
-                let fsExPhysGraphOpts = this.generate3dMarkFSExPhysOpts(this.benchmarks);
-                let fsExGraphOpts = this.generate3dMarkFSExOpts(this.benchmarks);
-                let fsUlGraphOpts = this.generate3dMarkFSUlOpts(this.benchmarks);
+             Chart.defaults.global.defaultFontColor = "#babcbd";
+             this.benchmarks = response['results'];
+             // Generate graph options
+             let cbGraphOpts = this.generateCinebenchOpts(this.benchmarks);
+             let freqGraphOpts = this.generateFrequencyOpts(this.benchmarks);
 
-                // Generate graph given options and element
-                this.freqGraphOpts = this.generateGraph(freqGraphOpts);
+             let fsExPhysGraphOpts = this.generate3dMarkFSExPhysOpts(this.benchmarks);
+             let fsExGraphOpts = this.generate3dMarkFSExOpts(this.benchmarks);
+             let fsUlGraphOpts = this.generate3dMarkFSUlOpts(this.benchmarks);
 
-                if(cbGraphOpts) {
-                    this.cinebenchGraphOpts = this.generateGraph(cbGraphOpts);
-                }
-                if(fsExGraphOpts) {
-                    this.fxExGraphOpts = this.generateGraph(fsExGraphOpts);
-                }
-                if(fsExPhysGraphOpts) {
-                    this.fxExPhysGraphOpts = this.generateGraph(fsExPhysGraphOpts);
-                }
-                if(fsUlGraphOpts) {
-                    this.fxUlGraphOpts = this.generateGraph(fsUlGraphOpts);
-                }
-                 // for (let i = 0; i < this.benchmarks.length; i++) {
-                 //     let bench_key = Object.keys(this.benchmarks[i])[0];
-                 //     // $('.specs').append("<p>"+this.benchmarks[i][bench_key].benchmarks.model+"</p>")
-                 // }
-                 console.log(cbGraphOpts)
-        })
-    }
+             // Generate graph given options and element
+             this.freqGraphOpts = this.generateGraph(freqGraphOpts);
+
+             if (cbGraphOpts) {
+                 this.cinebenchGraphOpts = this.generateGraph(cbGraphOpts);
+             }
+             if (fsExGraphOpts) {
+                 this.fxExGraphOpts = this.generateGraph(fsExGraphOpts);
+             }
+             if (fsExPhysGraphOpts) {
+                 this.fxExPhysGraphOpts = this.generateGraph(fsExPhysGraphOpts);
+             }
+             if (fsUlGraphOpts) {
+                 this.fxUlGraphOpts = this.generateGraph(fsUlGraphOpts);
+             }
+             // for (let i = 0; i < this.benchmarks.length; i++) {
+             //     let bench_key = Object.keys(this.benchmarks[i])[0];
+             //     // $('.specs').append("<p>"+this.benchmarks[i].benchmarks.model+"</p>")
+             // }
+         })
+     }
 
     generateCinebenchOpts (graphData) {
         let CinebenchOpts = JSON.parse(JSON.stringify(this.graphOpts));
@@ -70,12 +75,11 @@ export class ComparisonComponent implements OnInit {
         CinebenchOpts.graphTitle = 'Cinebench Score';
 
         for (let i = 0; i < graphData.length; i++) {
-            let bench_key = Object.keys(graphData[i])[0];
-            CinebenchOpts.graphLabels.push(graphData[i][bench_key].benchmarks.model + ' (' + graphData[i][bench_key].benchmarks.title + ')');
-            if (graphData[i][bench_key].benchmarks.cinebench_score === "0") {
+            CinebenchOpts.graphLabels.push(graphData[i].profile.model + ' (' + graphData[i].profile.title + ')');
+            if (graphData[i].profile.cinebench_score === "0") {
                 return false
             }
-            CinebenchOpts.graphData.push(graphData[i][bench_key].benchmarks.cinebench_score);
+            CinebenchOpts.graphData.push(graphData[i].profile.cinebench_score);
             //cores_data.push(benchmarks[i].freq_int);
             //colors.push('rgba(54, 162, 235, 0.2)');
             CinebenchOpts.graphColors.push('rgba(54, 162, 235, 0.2)');
@@ -96,20 +100,19 @@ export class ComparisonComponent implements OnInit {
         FrequencyOpts.graphTitle = 'Frequency (MHz)';
 
         for (let i = 0; i < graphData.length; i++) {
-            let bench_key = Object.keys(graphData[i])[0];
-            let score = graphData[i][bench_key].benchmarks.freq_int;
+            let score = graphData[i].profile.freq_int;
             let append = true;
             if (score >= FrequencyOpts.graphData[0]) {
                 append = false;
             }
             if (append) {
-                FrequencyOpts.graphLabels.push(graphData[i][bench_key].benchmarks.model + ' (' + graphData[i][bench_key].benchmarks.title + ')');
+                FrequencyOpts.graphLabels.push(graphData[i].profile.model + ' (' + graphData[i].profile.title + ')');
                 FrequencyOpts.graphData.push(score);
                 FrequencyOpts.graphColors.push('rgba(54, 162, 235, 0.2)');
                 FrequencyOpts.graphBorderColors.push('rgba(54, 162, 235, 1)');
             }
             else{
-                FrequencyOpts.graphLabels.unshift(graphData[i][bench_key].benchmarks.model + ' (' + graphData[i][bench_key].benchmarks.title + ')');
+                FrequencyOpts.graphLabels.unshift(graphData[i].profile.model + ' (' + graphData[i].profile.title + ')');
                 FrequencyOpts.graphData.unshift(score);
                 FrequencyOpts.graphColors.unshift('rgba(54, 162, 235, 0.2)');
                 FrequencyOpts.graphBorderColors.unshift('rgba(54, 162, 235, 1)');
@@ -129,13 +132,12 @@ export class ComparisonComponent implements OnInit {
         fireStrikeOpts.graphTitle = '3DMark FS Extreme';
         fireStrikeOpts.graphStep = 500;
         for (let i = 0; i < graphData.length; i++) {
-            let bench_key = Object.keys(graphData[i])[0];
-            if(graphData[i][bench_key].tdmark_result.length === 0){
+            if(graphData[i].tdmark_result.length === 0){
                 return false
             }
-            for (let b=0; b < graphData[i][bench_key].tdmark_result.length; b++){
-                if(graphData[i][bench_key].tdmark_result[b].version === 'FireStrikeExtreme'){
-                    let score = graphData[i][bench_key].tdmark_result[b].final_score;
+            for (let b=0; b < graphData[i].tdmark_result.length; b++){
+                if(graphData[i].tdmark_result[b].version === 'FireStrikeExtreme'){
+                    let score = graphData[i].tdmark_result[b].final_score;
                     // Check if we should be appending to the existing data or prepending, depending on if this value is highest or lowest
                     let append = true;
                     if (score >= fireStrikeOpts.graphData[0]) {
@@ -143,13 +145,13 @@ export class ComparisonComponent implements OnInit {
                     }
 
                     if(append) {
-                        fireStrikeOpts.graphLabels.push(graphData[i][bench_key].benchmarks.gpu[0].model);
+                        fireStrikeOpts.graphLabels.push(graphData[i].profile.gpu[0].model);
                         fireStrikeOpts.graphData.push(score);
                         fireStrikeOpts.graphColors.push('rgba(54, 162, 235, 0.2)');
                         fireStrikeOpts.graphBorderColors.push('rgba(54, 162, 235, 1)');
                     }
                     else {
-                        fireStrikeOpts.graphLabels.unshift(graphData[i][bench_key].benchmarks.gpu[0].model);
+                        fireStrikeOpts.graphLabels.unshift(graphData[i].profile.gpu[0].model);
                         fireStrikeOpts.graphData.unshift(score);
                         fireStrikeOpts.graphColors.unshift('rgba(54, 162, 235, 0.2)');
                         fireStrikeOpts.graphBorderColors.unshift('rgba(54, 162, 235, 1)');
@@ -171,26 +173,25 @@ export class ComparisonComponent implements OnInit {
         fireStrikeOpts.graphTitle = '3DMark FS Extreme Physics Score';
         fireStrikeOpts.graphStep = 500;
         for (let i = 0; i < graphData.length; i++) {
-            let bench_key = Object.keys(graphData[i])[0];
-            if(graphData[i][bench_key].tdmark_result.length === 0){
+            if(graphData[i].tdmark_result.length === 0){
                 return false
             }
-            for (let b=0; b < graphData[i][bench_key].tdmark_result.length; b++){
-                if(graphData[i][bench_key].tdmark_result[b].version === 'FireStrikeExtreme'){
-                    let score = graphData[i][bench_key].tdmark_result[b].physics_score;
+            for (let b=0; b < graphData[i].tdmark_result.length; b++){
+                if(graphData[i].tdmark_result[b].version === 'FireStrikeExtreme'){
+                    let score = graphData[i].tdmark_result[b].physics_score;
                     let append = true;
                     if (score >= fireStrikeOpts.graphData[0]) {
                         append = false;
                     }
 
                     if(append) {
-                        fireStrikeOpts.graphLabels.push(graphData[i][bench_key].benchmarks.gpu[0].model);
+                        fireStrikeOpts.graphLabels.push(graphData[i].profile.gpu[0].model);
                         fireStrikeOpts.graphData.push(score);
                         fireStrikeOpts.graphColors.push('rgba(54, 162, 235, 0.2)');
                         fireStrikeOpts.graphBorderColors.push('rgba(54, 162, 235, 1)');
                     }
                     else {
-                        fireStrikeOpts.graphLabels.unshift(graphData[i][bench_key].benchmarks.gpu[0].model);
+                        fireStrikeOpts.graphLabels.unshift(graphData[i].profile.gpu[0].model);
                         fireStrikeOpts.graphData.unshift(score);
                         fireStrikeOpts.graphColors.unshift('rgba(54, 162, 235, 0.2)');
                         fireStrikeOpts.graphBorderColors.unshift('rgba(54, 162, 235, 1)');
@@ -214,26 +215,25 @@ export class ComparisonComponent implements OnInit {
         fireStrikeOpts.graphStep = 500;
 
         for (let i = 0; i < graphData.length; i++) {
-            let bench_key = Object.keys(graphData[i])[0];
-            if(graphData[i][bench_key].tdmark_result.length === 0){
+            if(graphData[i].tdmark_result.length === 0){
                 return false
             }
-            for (let b=0; b < graphData[i][bench_key].tdmark_result.length; b++){
-                if(graphData[i][bench_key].tdmark_result[b].version === 'FireStrikeUltra'){
-                    let score = graphData[i][bench_key].tdmark_result[b].final_score;
+            for (let b=0; b < graphData[i].tdmark_result.length; b++){
+                if(graphData[i].tdmark_result[b].version === 'FireStrikeUltra'){
+                    let score = graphData[i].tdmark_result[b].final_score;
                     let append = true;
                     if (score >= fireStrikeOpts.graphData[0]) {
                         append = false;
                     }
 
                     if(append) {
-                        fireStrikeOpts.graphLabels.push(graphData[i][bench_key].benchmarks.gpu[0].model);
+                        fireStrikeOpts.graphLabels.push(graphData[i].profile.gpu[0].model);
                         fireStrikeOpts.graphData.push(score);
                         fireStrikeOpts.graphColors.push('rgba(54, 162, 235, 0.2)');
                         fireStrikeOpts.graphBorderColors.push('rgba(54, 162, 235, 1)');
                     }
                     else {
-                        fireStrikeOpts.graphLabels.unshift(graphData[i][bench_key].benchmarks.gpu[0].model);
+                        fireStrikeOpts.graphLabels.unshift(graphData[i].profile.gpu[0].model);
                         fireStrikeOpts.graphData.unshift(score);
                         fireStrikeOpts.graphColors.unshift('rgba(54, 162, 235, 0.2)');
                         fireStrikeOpts.graphBorderColors.unshift('rgba(54, 162, 235, 1)');
@@ -324,7 +324,6 @@ export class ComparisonComponent implements OnInit {
         };
         if(graphOpts.graphData) {
             for (let i = 0; i < graphOpts.graphData.length; i++) {
-                console.log(graphOpts.graphData[i]);
                 let dataset = {
                     data: graphOpts.graphData[i],
                     backgroundColor: graphOpts.graphColors[i],

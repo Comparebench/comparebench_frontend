@@ -49,7 +49,6 @@ export class UserService {
     }
 
     isLoggedIn(): Observable<boolean>{
-        console.log("Checking auth: " + this.loggedIn);
         return this.loggedIn
     }
 

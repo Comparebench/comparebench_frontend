@@ -1,109 +1,110 @@
 <div class="page-wrapper">
     <div class="container-fluid">
-        <div class="row ">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                         <div class="d-flex">
-                            <h4 class="card-title">
-                                <span class="lstick"></span>
-                                Comparison
-                            </h4>
+        <div class="card">
+             <!-- Nav tabs -->
+            <ul class="nav nav-tabs customtab" role="tablist">
+                <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#results" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">Results</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profiles" role="tab"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down">Profiles</span></a> </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="results" role="tabpanel">
+                    <div class="row ">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                 <div class="d-flex">
+                                    <h4 class="card-title">
+                                        <span class="lstick"></span>
+                                        CPU Results
+                                    </h4>
+                                </div>
+                                <div class="row" >
+                                <div class="col-md-6 cinebench_graph" *ngIf="cinebenchGraphOpts">
+                                    <canvas baseChart
+                                        [datasets]="cinebenchGraphOpts.data.datasets"
+                                        [labels]="cinebenchGraphOpts.data.labels"
+                                        [options]="cinebenchGraphOpts.options"
+                                        [chartType]="cinebenchGraphOpts.type">
+                                    </canvas>
+                                </div>
+                                <div class="col-md-6" *ngIf="freqGraphOpts">
+                                            <canvas baseChart
+                                                [datasets]="freqGraphOpts.data.datasets"
+                                                [labels]="freqGraphOpts.data.labels"
+                                                [options]="freqGraphOpts.options"
+                                                [chartType]="freqGraphOpts.type">
+                                            </canvas>
+                                </div>
+                                <div class="col-md-6 tdmark_physics_graph" *ngIf="fxExPhysGraphOpts">
+                                            <canvas baseChart
+                                                [datasets]="fxExPhysGraphOpts.data.datasets"
+                                                [labels]="fxExPhysGraphOpts.data.labels"
+                                                [options]="fxExPhysGraphOpts.options"
+                                                [chartType]="fxExPhysGraphOpts.type">
+                                            </canvas>
+                                </div>
+                            </div>
+                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3 col-xs-6 b-r"><span class="text-muted">CPU</span>
-                                <br>
-                                <p><strong>CPU</strong></p>
-                            </div>
-                            <div class="col-md-3 col-xs-6 b-r"><span class="text-muted">GPU</span>
-                                <br>
-                                    <p><strong>GPU</strong></p>
-                            </div>
-                            <div class="col-md-3 col-xs-6 b-r"><span class="text-muted">Memory</span>
-                                <br>
-                                <p><strong>Memory</strong></p>
+                    </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                     <div class="d-flex">
+                                        <h4 class="card-title">
+                                            <span class="lstick"></span>
+                                            GPU Results
+                                        </h4>
+                                    </div>
+                                    <div class="row" >
+                                        <div class="col-md-6 tdmark_ex_graph" *ngIf="fxExGraphOpts">
+                                                <canvas baseChart
+                                                [datasets]="fxExGraphOpts.data.datasets"
+                                                [labels]="fxExGraphOpts.data.labels"
+                                                [options]="fxExGraphOpts.options"
+                                                [chartType]="fxExGraphOpts.type">
+                                        </canvas>
+                                        </div>
+                                        <div class="col-md-6 tdmark_ul_graph" *ngIf="fxUlGraphOpts">
+                                                <canvas baseChart
+                                                    [datasets]="fxUlGraphOpts.data.datasets"
+                                                    [labels]="fxUlGraphOpts.data.labels"
+                                                    [options]="fxUlGraphOpts.options"
+                                                    [chartType]="fxUlGraphOpts.type">
+                                                </canvas>
+                                        </div>
+                                        <div class="col-md-6 heaven_graph">
+            <!--                                <div class="col-md-6 tdmark_ex_graph" *ngIf="fxUlGraphOpts">-->
+            <!--                                    <canvas baseChart-->
+            <!--                                        [datasets]="fxUlGraphOpts.data.datasets"-->
+            <!--                                        [labels]="fxUlGraphOpts.data.labels"-->
+            <!--                                        [options]="fxUlGraphOpts.options"-->
+            <!--                                        [chartType]="fxUlGraphOpts.type">-->
+            <!--                                    </canvas>-->
+            <!--                                </div>-->
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row ">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                         <div class="d-flex">
-                            <h4 class="card-title">
-                                <span class="lstick"></span>
-                                CPU Results
-                            </h4>
-                        </div>
-                        <div class="row" >
-                        <div class="col-md-6 cinebench_graph" *ngIf="cinebenchGraphOpts">
-                            <canvas baseChart
-                                [datasets]="cinebenchGraphOpts.data.datasets"
-                                [labels]="cinebenchGraphOpts.data.labels"
-                                [options]="cinebenchGraphOpts.options"
-                                [chartType]="cinebenchGraphOpts.type">
-                            </canvas>
-                        </div>
-                        <div class="col-md-6" *ngIf="freqGraphOpts">
-                                    <canvas baseChart
-                                        [datasets]="freqGraphOpts.data.datasets"
-                                        [labels]="freqGraphOpts.data.labels"
-                                        [options]="freqGraphOpts.options"
-                                        [chartType]="freqGraphOpts.type">
-                                    </canvas>
-                        </div>
-                        <div class="col-md-6 tdmark_physics_graph" *ngIf="fxExPhysGraphOpts">
-                                    <canvas baseChart
-                                        [datasets]="fxExPhysGraphOpts.data.datasets"
-                                        [labels]="fxExPhysGraphOpts.data.labels"
-                                        [options]="fxExPhysGraphOpts.options"
-                                        [chartType]="fxExPhysGraphOpts.type">
-                                    </canvas>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row ">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                         <div class="d-flex">
-                            <h4 class="card-title">
-                                <span class="lstick"></span>
-                                GPU Results
-                            </h4>
-                        </div>
-                        <div class="row" >
-                            <div class="col-md-6 tdmark_ex_graph" *ngIf="fxExGraphOpts">
-                                    <canvas baseChart
-                                    [datasets]="fxExGraphOpts.data.datasets"
-                                    [labels]="fxExGraphOpts.data.labels"
-                                    [options]="fxExGraphOpts.options"
-                                    [chartType]="fxExGraphOpts.type">
-                            </canvas>
-                            </div>
-                            <div class="col-md-6 tdmark_ul_graph" *ngIf="fxUlGraphOpts">
-                                    <canvas baseChart
-                                        [datasets]="fxUlGraphOpts.data.datasets"
-                                        [labels]="fxUlGraphOpts.data.labels"
-                                        [options]="fxUlGraphOpts.options"
-                                        [chartType]="fxUlGraphOpts.type">
-                                    </canvas>
-                            </div>
-                            <div class="col-md-6 heaven_graph">
-<!--                                <div class="col-md-6 tdmark_ex_graph" *ngIf="fxUlGraphOpts">-->
-<!--                                    <canvas baseChart-->
-<!--                                        [datasets]="fxUlGraphOpts.data.datasets"-->
-<!--                                        [labels]="fxUlGraphOpts.data.labels"-->
-<!--                                        [options]="fxUlGraphOpts.options"-->
-<!--                                        [chartType]="fxUlGraphOpts.type">-->
-<!--                                    </canvas>-->
-<!--                                </div>-->
+                <div class="tab-pane" id="profiles" role="tabpanel">
+                    <div style="display: flex;">
+                        <div class="card mb-3" style="max-width: 540px;" *ngFor="let profile of profiles">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                   <i style="font-size: 85px;" class="mdi mdi-desktop-tower"></i>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{profile.title}}</h5>
+                                        <p class="card-text">{{profile.model}}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
