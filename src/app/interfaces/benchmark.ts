@@ -11,6 +11,7 @@ export class IBenchmark {
     cpu_id: any
     model:any;
     freq: any;
+    compareBarHidden: boolean = false;
 
     constructor(benchmarkData) {
         this.rid = benchmarkData.rid;

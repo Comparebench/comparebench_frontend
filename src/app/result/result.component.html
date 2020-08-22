@@ -38,7 +38,7 @@
                                 <p><strong>{{benchmark.mem_total}}</strong></p>
                             </div>
                             <div class="col-md-3 col-xs-6 b-r" style="text-align: center;">
-                                <div class="btn btn-info addCompare" [attr.data-compare]="benchmark.rid">Compare</div>
+                                <div class="btn btn-info addCompare" (click)="addToCompareBar()">Compare</div>
                             </div>
                         </div>
                     </div>

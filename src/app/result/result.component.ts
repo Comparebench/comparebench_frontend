@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../user.service";
 import {IBenchmark} from "../interfaces/benchmark";
+import {CompareBarService} from "../compare-bar.service";
 
 @Component({
   selector: 'app-result',
@@ -16,8 +17,12 @@ export class ResultComponent implements OnInit {
 
     // this.resultId = params
 
-    constructor(private route: ActivatedRoute, private userService: UserService) {
+    constructor(private route: ActivatedRoute, private userService: UserService, private compareBarService: CompareBarService) {
         this.benchmark = new IBenchmark({})
+    }
+
+    addToCompareBar(){
+        this.compareBarService.addBenchmark(this.benchmark)
     }
 
     ngOnInit() {

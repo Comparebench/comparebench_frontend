@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {IBenchmark} from "../interfaces/benchmark";
+import {CompareBarService} from "../compare-bar.service";
 
 @Component({
     selector: 'app-compare-bar',
@@ -25,15 +27,30 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 })
 export class CompareBarComponent implements OnInit {
     isOpen = false;
-    benchmarks = [{}, {}]
-    constructor() {
+    benchmarks: IBenchmark[] = []
+    constructor(private compareBarService: CompareBarService) {
     }
 
     toggle() {
         this.isOpen = !this.isOpen;
     }
+    remove(rid){
+        for(let i=0;i<this.benchmarks.length;i++){
+            if(this.benchmarks[i].rid == rid){
+                this.benchmarks[i].compareBarHidden = true
+            }
+        }
+    }
 
     ngOnInit(): void {
+        this.compareBarService.getBenchmarks().subscribe(response=>{
+            // for(let i=0;i<response.length;i++){
+            //     if(response[i].compareBarHidden){
+            //         continue
+            //     }
+            // }
+            this.benchmarks = response
+        })
     }
 
 }

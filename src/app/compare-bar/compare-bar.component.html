@@ -1,13 +1,13 @@
 <div class="compare-bar" [@openClose]="isOpen ? 'open' : 'closed'">
     <button class="btn btn-info compare-bar-toggle" (click)="toggle()"><i class="mdi mdi-compare"></i>  Compare</button>
     <div class="row compare-cards" style="margin-left: 20px;" *ngFor="let benchmark of benchmarks">
-        <div class="card" style="height: 139px; margin: 5px;">
+        <div class="card" style="height: 139px; margin: 5px;" [hidden]="benchmark.compareBarHidden">
             <div class="card-body" style="max-width: 170px;width: 170px;padding: 10px;">
-                <div class="compare-remove" style="float: right;cursor:pointer;padding-top: 0; margin-top: 0; line-height: 0.5;">x</div>
+                <div class="compare-remove" style="float: right;cursor:pointer;padding-top: 0; margin-top: 0; line-height: 0.5;" (click)="remove(benchmark.rid)">x</div>
                 <div class="card-header" style="padding: 0;">
-                    <h5>Benchmark Title</h5>
+                    <h5>{{benchmark.title}}</h5>
                 </div>
-                <small class="text-muted">Benchmark Model</small>
+                <small class="text-muted">{{benchmark.model}}</small>
             </div>
         </div>
     </div>
