@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {IBenchmark} from "../interfaces/benchmark";
 import {CompareBarService} from "../compare-bar.service";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
     selector: 'app-compare-bar',
@@ -28,7 +29,12 @@ import {CompareBarService} from "../compare-bar.service";
 export class CompareBarComponent implements OnInit {
     isOpen = false;
     benchmarks: IBenchmark[] = []
-    constructor(private compareBarService: CompareBarService) {
+    constructor(private compareBarService: CompareBarService, private cookieService: CookieService) {
+        let benchmarks = JSON.parse(atob(this.cookieService.get("compareBar")))
+        for (let i = 0; i < benchmarks.length; i++) {
+            this.compareBarService.addBenchmark(benchmarks[i])
+        }
+        this.benchmarks = benchmarks
     }
 
     toggle() {
@@ -43,6 +49,7 @@ export class CompareBarComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
         this.compareBarService.getBenchmarks().subscribe(response=>{
             // for(let i=0;i<response.length;i++){
             //     if(response[i].compareBarHidden){
