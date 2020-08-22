@@ -56,6 +56,7 @@ export class UserService {
         // return 'https://comparebench.com/api'
         // return 'http://localhost:8180/api'
         return "/api"
+
     }
 }
 
