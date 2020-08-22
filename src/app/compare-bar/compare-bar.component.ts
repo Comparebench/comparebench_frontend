@@ -25,6 +25,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 })
 export class CompareBarComponent implements OnInit {
     isOpen = false;
+    benchmarks = [{}, {}]
     constructor() {
     }
 

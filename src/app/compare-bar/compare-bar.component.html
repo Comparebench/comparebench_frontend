@@ -1,7 +1,16 @@
-<div class="compare-bar" [@openClose]="isOpen ? 'open' : 'closed'" (click)="toggle()">
-    <div class="btn btn-info compare-bar-toggle"><i class="mdi mdi-compare"></i>  Compare</div>
-    <div class="row compare-cards" style="margin-left: 20px;">
+<div class="compare-bar" [@openClose]="isOpen ? 'open' : 'closed'">
+    <button class="btn btn-info compare-bar-toggle" (click)="toggle()"><i class="mdi mdi-compare"></i>  Compare</button>
+    <div class="row compare-cards" style="margin-left: 20px;" *ngFor="let benchmark of benchmarks">
+        <div class="card" style="height: 139px; margin: 5px;">
+            <div class="card-body" style="max-width: 170px;width: 170px;padding: 10px;">
+                <div class="compare-remove" style="float: right;cursor:pointer;padding-top: 0; margin-top: 0; line-height: 0.5;">x</div>
+                <div class="card-header" style="padding: 0;">
+                    <h5>Benchmark Title</h5>
+                </div>
+                <small class="text-muted">Benchmark Model</small>
+            </div>
+        </div>
     </div>
-    <div class="btn btn-sm btn-info compare-create" style="height: 30px;margin-left: 25px;margin-top: 5px;">Create comparison</div>
+    <div class="btn btn-sm btn-info" [hidden]="benchmarks.length == 0" style="height: 30px;margin-left: 25px;margin-top: 5px;">Create comparison</div>
 </div>
 
