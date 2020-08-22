@@ -14,7 +14,7 @@ export class IBenchmark {
     compareBarHidden: boolean = false;
 
     constructor(benchmarkData) {
-        this.rid = benchmarkData.rid;
+        this.rid = benchmarkData.id;
         this.cinebench_score = benchmarkData.cinebench_score;
         this.heaven_score = benchmarkData.heaven_score;
         this.model = benchmarkData.model;

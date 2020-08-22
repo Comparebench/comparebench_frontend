@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {BenchmarkService} from "../benchmark.service";
+import {CompareBarService} from "../compare-bar.service";
 
 @Component({
   selector: 'app-comparison-creation',
@@ -16,10 +17,11 @@ export class ComparisonCreationComponent implements OnInit {
     description;
     benchmarks;
 
-    constructor(private route: ActivatedRoute, private benchmarkService: BenchmarkService, private router: Router) {
+    constructor(private route: ActivatedRoute, private benchmarkService: BenchmarkService, private router: Router, private compareBarService: CompareBarService) {
     }
     create(){
         this.benchmarkService.createComparison(this.benchmarks, this.title, this.description).subscribe(response=>{
+            this.compareBarService.clearAll()
             this.router.navigate(['/compare', response["compare"]['compare_id']])
         })
     }

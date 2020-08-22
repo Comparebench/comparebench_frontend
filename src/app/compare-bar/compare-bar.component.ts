@@ -3,6 +3,8 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 import {IBenchmark} from "../interfaces/benchmark";
 import {CompareBarService} from "../compare-bar.service";
 import {CookieService} from "ngx-cookie-service";
+import {BenchmarkService} from "../benchmark.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-compare-bar',
@@ -29,12 +31,14 @@ import {CookieService} from "ngx-cookie-service";
 export class CompareBarComponent implements OnInit {
     isOpen = false;
     benchmarks: IBenchmark[] = []
-    constructor(private compareBarService: CompareBarService, private cookieService: CookieService) {
-        let benchmarks = JSON.parse(atob(this.cookieService.get("compareBar")))
-        for (let i = 0; i < benchmarks.length; i++) {
-            this.compareBarService.addBenchmark(benchmarks[i])
-        }
-        this.benchmarks = benchmarks
+    constructor(private router: Router, private compareBarService: CompareBarService, private BenchmarkService: BenchmarkService, private cookieService: CookieService) {
+        try {
+            let benchmarks = JSON.parse(atob(this.cookieService.get("compareBar")))
+            for (let i = 0; i < benchmarks.length; i++) {
+                this.compareBarService.addBenchmark(benchmarks[i])
+            }
+            this.benchmarks = benchmarks
+        }catch (e){}
     }
 
     toggle() {
@@ -47,7 +51,18 @@ export class CompareBarComponent implements OnInit {
             }
         }
     }
-
+    clear(){
+        this.compareBarService.clearAll()
+    }
+    createInstantComparison(){
+        let benchmarkRequest = []
+        for(let i=0;i<this.benchmarks.length;i++){
+            benchmarkRequest.push(this.benchmarks[i].rid)
+        }
+        this.BenchmarkService.createInstantComparison(this.benchmarks).subscribe(response=>{
+            this.router.navigate(['/compare', response["compare"]['compare_id']])
+        })
+    }
     ngOnInit(): void {
 
         this.compareBarService.getBenchmarks().subscribe(response=>{

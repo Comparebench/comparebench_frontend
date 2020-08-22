@@ -22,6 +22,9 @@ export class BenchmarkService {
     createComparison(benchmarks, title, desc): Observable<IResponse> {
         return this.http.post<IResponse>(this._createComparisonUrl, {benchmarks: benchmarks, title: title, desc: desc}, {})
     }
+    createInstantComparison(benchmarks): Observable<IResponse> {
+        return this.http.post<IResponse>(this._createComparisonUrl, {benchmarks: benchmarks, title: "Instant Comparison", desc: ''}, {})
+    }
     addBenchmark(benchmark): Observable<IResponse> {
         return this.http.post<IResponse>(this._addBenchmarkUrl, benchmark, {})
     }

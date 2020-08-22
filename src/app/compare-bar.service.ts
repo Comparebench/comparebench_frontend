@@ -18,6 +18,10 @@ export class CompareBarService implements OnInit{
     getBenchmarks(): Observable<IBenchmark[]> {
         return this.benchmarks.asObservable();
     }
+    clearAll(){
+        this._benchmarks = []
+        this.benchmarks.next(this._benchmarks);
+    }
     addBenchmark(benchmark: IBenchmark) {
         this._benchmarks.push(benchmark)
         this.benchmarks.next(this._benchmarks);
