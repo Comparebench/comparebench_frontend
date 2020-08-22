@@ -15,6 +15,7 @@ export class BenchmarkService {
     _addBenchmarkUrl: string = UserService.getHostname() + "/benchmarks/add";
     _createComparisonUrl: string = UserService.getHostname() + "/benchmarks/add_comparison";
     _benchmarksUrl: string = UserService.getHostname() + "/benchmarks/results";
+    _resultUrl: string = UserService.getHostname() + "/benchmarks/get_profile";
 
     getBenchmarkTypes(): Observable<ILoginResponse> {
         return this.http.post<ILoginResponse>(this._benchmarkTypesUrl, {}, {})
@@ -30,6 +31,9 @@ export class BenchmarkService {
     }
     getBenchmarks(): Observable<IResponse> {
         return this.http.post<IResponse>(this._benchmarksUrl, {}, {})
+    }
+    getProfile(resultId): Observable<IResponse> {
+        return this.http.post<IResponse>(this._resultUrl, {result_id: resultId}, {})
     }
 
 }

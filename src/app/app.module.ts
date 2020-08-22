@@ -10,8 +10,8 @@ import {TokenInterceptor} from "./token.interceptor";
 import {CookieService} from "ngx-cookie-service";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { BenchmarkComponent } from './benchmark/benchmark.component';
-import { ResultComponent } from './result/result.component';
+import { BenchmarkCreationComponent } from './benchmark-creation/benchmark-creation.component';
+import { BenchmarkProfileComponent } from './benchmark-profile/benchmark-profile.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ComparisonComponent } from './comparison/comparison.component';
@@ -30,8 +30,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     AppComponent,
     LandingComponent,
     DashboardComponent,
-    BenchmarkComponent,
-    ResultComponent,
+    BenchmarkCreationComponent,
+    BenchmarkProfileComponent,
     NavigationComponent,
     LoginComponent,
     ComparisonComponent,

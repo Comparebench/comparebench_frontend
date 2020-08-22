@@ -8,7 +8,7 @@ import { Meta } from '@angular/platform-browser';
   templateUrl: './benchmark.component.html',
   styleUrls: ['./benchmark.component.css']
 })
-export class BenchmarkComponent implements OnInit {
+export class BenchmarkCreationComponent implements OnInit {
     title;
     adding = true;
     isPrivate = false;
@@ -58,7 +58,7 @@ export class BenchmarkComponent implements OnInit {
         formData.append('private', this.isPrivate.toString());
         formData.append('cpuz_html', this.cpuzFile);
         this.benchmarkService.addBenchmark(formData).subscribe((response) => {
-            this.router.navigate(['/benchmark', response['benchmark_id']])
+            this.router.navigate(['/benchmark-creation', response['benchmark_id']])
         })
     }
     benchmarkTypeChanged(){

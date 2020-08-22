@@ -14,7 +14,6 @@ export class UserService {
     _signUpUrl: string = UserService.getHostname() + "/signup";
     _resultsUrl: string = UserService.getHostname() + "/account/results";
     _profileUrl: string = UserService.getHostname() + "/account/profile";
-    _resultUrl: string = UserService.getHostname() + "/benchmark";
     _compareUrl: string = UserService.getHostname() + "/benchmarks/get_comparison";
     _authUrl: string = UserService.getHostname() + "/authenticate";
     _logoutUrl: string = UserService.getHostname() + "/logout";
@@ -29,10 +28,6 @@ export class UserService {
     }
     results(): Observable<IResponse> {
         return this.http.post<IResponse>(this._resultsUrl, {}, {})
-    }
-
-    getResult(resultId): Observable<IResponse> {
-        return this.http.post<IResponse>(this._resultUrl, {result_id: resultId}, {})
     }
     getProfile(uid?): Observable<IResponse> {
         return this.http.post<IResponse>(this._profileUrl, {uid: uid}, {})

@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LandingComponent} from "./landing/landing.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
-import {ResultComponent} from "./result/result.component";
+import {BenchmarkProfileComponent} from "./benchmark-profile/benchmark-profile.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {ComparisonComponent} from "./comparison/comparison.component";
-import {BenchmarkComponent} from "./benchmark/benchmark.component";
+import {BenchmarkCreationComponent} from "./benchmark-creation/benchmark-creation.component";
 import {SignupComponent} from "./auth/signup/signup.component";
 import {RoadmapComponent} from "./roadmap/roadmap.component";
 import {ComparisonCreationComponent} from "./comparison-creation/comparison-creation.component";
@@ -29,13 +29,13 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
-        path: 'benchmark/add',
-        component: BenchmarkComponent,
+        path: 'benchmark-creation/add',
+        component: BenchmarkCreationComponent,
         pathMatch: 'full'
     },
     {
         path: 'benchmark/:resultId',
-        component: ResultComponent,
+        component: BenchmarkProfileComponent,
         pathMatch: 'full'
     },
     {

@@ -18,13 +18,6 @@ export class DashboardComponent implements OnInit {
     results;
     comparisons;
 
-    constructResults(resultData){
-        this.results = resultData.bench_results;
-        this.comparisons = resultData.comparisons;
-        this.resultsCount = resultData.results_count;
-        this.compareCount = resultData.compare_count;
-    }
-
     deleteResult(resultId, template) {
         this.modalService.open(template, {ariaLabelledBy: 'modal-basic-title'}).result.then(() => {
             console.log("Deleted")
@@ -34,8 +27,12 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-        let response;
-        this.userService.results().subscribe(res => response = res as IResponse,null, () => this.constructResults(response))
+        this.userService.results().subscribe(response => {
+            this.results = response.bench_results;
+            this.comparisons = response.comparisons;
+            this.resultsCount = response.results_count;
+            this.compareCount = response.compare_count;
+        })
     }
 
 }

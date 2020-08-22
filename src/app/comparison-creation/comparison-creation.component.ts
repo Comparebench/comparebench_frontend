@@ -29,10 +29,10 @@ export class ComparisonCreationComponent implements OnInit {
     ngOnInit() {
         this.benchmarkService.getBenchmarks().subscribe((response) => {
             this.benchmarks = [];
-            for(let i=0;i<response['result'].length;i++){
+            for(let i=0;i<response['benchmark-creation-profile'].length;i++){
                 let benchmark = {
-                    id: response['result'][i]['id'],
-                    text:response['result'][i]['title']
+                    id: response['benchmark-creation-profile'][i]['id'],
+                    text:response['benchmark-creation-profile'][i]['title']
                 };
                 this.benchmarks.push(benchmark)
             }
